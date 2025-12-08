@@ -139,7 +139,7 @@
         "1.2"
       ],
       "test": "Primary sky, Secondary amber, hover lift effect",
-      "status": false
+      "status": true
     },
     {
       "id": "3.2",
@@ -149,7 +149,7 @@
         "1.3"
       ],
       "test": "Rounded corners 16px, shadow, lift on hover",
-      "status": false
+      "status": true
     },
     {
       "id": "3.3",
@@ -159,7 +159,7 @@
         "1.3"
       ],
       "test": "Fraunces font, consistent styling across pages",
-      "status": false
+      "status": true
     },
     {
       "id": "3.4",
@@ -169,7 +169,7 @@
         "3.2"
       ],
       "test": "Number + label display, hover animation",
-      "status": false
+      "status": true
     },
     {
       "id": "3.5",
@@ -179,7 +179,7 @@
         "1.3"
       ],
       "test": "SVG shapes render, positioned absolute",
-      "status": false
+      "status": true
     },
     {
       "id": "3.6",
@@ -189,7 +189,7 @@
         "1.2"
       ],
       "test": "Text cycles through array with smooth fade",
-      "status": false
+      "status": true
     },
     {
       "id": "3.7",
@@ -199,7 +199,7 @@
         "1.2"
       ],
       "test": "Element fades/slides in on viewport entry",
-      "status": false
+      "status": true
     },
     {
       "id": "3.8",
@@ -209,7 +209,7 @@
         "1.2"
       ],
       "test": "Element moves slower than scroll",
-      "status": false
+      "status": true
     },
     {
       "id": "3.9",
@@ -219,7 +219,7 @@
         "1.2"
       ],
       "test": "Shows skeleton while loading, uses next/image",
-      "status": false
+      "status": true
     },
     {
       "id": "3.10",
@@ -229,7 +229,7 @@
         "1.2"
       ],
       "test": "Expand/collapse with smooth animation",
-      "status": false
+      "status": true
     },
     {
       "id": "3.11",
@@ -239,7 +239,7 @@
         "1.2"
       ],
       "test": "Grade level badges render with correct colors",
-      "status": false
+      "status": true
     },
     {
       "id": "3.12",
@@ -249,7 +249,7 @@
         "1.2"
       ],
       "test": "Faculty photos display with fallback placeholder",
-      "status": false
+      "status": true
     },
     {
       "id": "3.13",
@@ -260,7 +260,7 @@
         "3.2"
       ],
       "test": "Card flips on hover with front/back content",
-      "status": false
+      "status": true
     },
     {
       "id": "4.1",
