@@ -1,0 +1,630 @@
+{
+  "project": "fma-website",
+  "version": "1.0.0",
+  "features": [
+    {
+      "id": "1.1",
+      "feature": "Init Next.js 14 + App Router",
+      "track": "setup",
+      "depends_on": [],
+      "test": "npm run dev starts, localhost:3000 loads",
+      "status": false
+    },
+    {
+      "id": "1.2",
+      "feature": "Configure Tailwind + shadcn/ui",
+      "track": "setup",
+      "depends_on": ["1.1"],
+      "test": "shadcn Button renders, Tailwind classes apply",
+      "status": false
+    },
+    {
+      "id": "1.3",
+      "feature": "Setup design tokens (colors, typography, spacing)",
+      "track": "setup",
+      "depends_on": ["1.2"],
+      "test": "Sky blue #0ea5e9, Amber #f59e0b in tailwind.config",
+      "status": false
+    },
+    {
+      "id": "1.4",
+      "feature": "Configure fonts (Fraunces, DM Sans)",
+      "track": "setup",
+      "depends_on": ["1.1"],
+      "test": "Both fonts load, visible in DevTools",
+      "status": false
+    },
+    {
+      "id": "1.5",
+      "feature": "Setup static export config for Vercel",
+      "track": "setup",
+      "depends_on": ["1.1"],
+      "test": "npm run build succeeds with static output",
+      "status": false
+    },
+    {
+      "id": "1.6",
+      "feature": "Create school constants file",
+      "track": "setup",
+      "depends_on": ["1.1"],
+      "test": "Constants importable, data matches context files",
+      "status": false
+    },
+    {
+      "id": "2.1",
+      "feature": "Create root layout with fonts/metadata",
+      "track": "frontend-public",
+      "depends_on": ["1.4"],
+      "test": "HTML has proper meta tags, fonts applied to body",
+      "status": false
+    },
+    {
+      "id": "2.2",
+      "feature": "Build sticky header with blur backdrop",
+      "track": "frontend-public",
+      "depends_on": ["1.3"],
+      "test": "Header sticks on scroll, blur backdrop visible",
+      "status": false
+    },
+    {
+      "id": "2.3",
+      "feature": "Build desktop navigation",
+      "track": "frontend-public",
+      "depends_on": ["2.2"],
+      "test": "All 7 page links work, active state visible",
+      "status": false
+    },
+    {
+      "id": "2.4",
+      "feature": "Build mobile hamburger menu",
+      "track": "frontend-public",
+      "depends_on": ["2.2"],
+      "test": "Menu opens/closes, animations smooth",
+      "status": false
+    },
+    {
+      "id": "2.5",
+      "feature": "Build footer",
+      "track": "frontend-public",
+      "depends_on": ["1.3"],
+      "test": "Footer renders, links work, contact info correct",
+      "status": false
+    },
+    {
+      "id": "2.6",
+      "feature": "Create container component",
+      "track": "frontend-public",
+      "depends_on": ["1.3"],
+      "test": "Container centers content at max-w-1200px",
+      "status": false
+    },
+    {
+      "id": "3.1",
+      "feature": "Button component with variants (primary/secondary/ghost)",
+      "track": "frontend-public",
+      "depends_on": ["1.2"],
+      "test": "Primary sky, Secondary amber, hover lift effect",
+      "status": false
+    },
+    {
+      "id": "3.2",
+      "feature": "Card component with hover effects",
+      "track": "frontend-public",
+      "depends_on": ["1.3"],
+      "test": "Rounded corners 16px, shadow, lift on hover",
+      "status": false
+    },
+    {
+      "id": "3.3",
+      "feature": "Section heading component",
+      "track": "frontend-public",
+      "depends_on": ["1.3"],
+      "test": "Fraunces font, consistent styling across pages",
+      "status": false
+    },
+    {
+      "id": "3.4",
+      "feature": "Stat card component",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "Number + label display, hover animation",
+      "status": false
+    },
+    {
+      "id": "3.5",
+      "feature": "Floating decorative shapes component",
+      "track": "frontend-public",
+      "depends_on": ["1.3"],
+      "test": "SVG shapes render, positioned absolute",
+      "status": false
+    },
+    {
+      "id": "3.6",
+      "feature": "Animated text rotation component",
+      "track": "frontend-public",
+      "depends_on": ["1.2"],
+      "test": "Text cycles through array with smooth fade",
+      "status": false
+    },
+    {
+      "id": "3.7",
+      "feature": "Scroll-triggered animation wrapper",
+      "track": "frontend-public",
+      "depends_on": ["1.2"],
+      "test": "Element fades/slides in on viewport entry",
+      "status": false
+    },
+    {
+      "id": "3.8",
+      "feature": "Parallax wrapper component",
+      "track": "frontend-public",
+      "depends_on": ["1.2"],
+      "test": "Element moves slower than scroll",
+      "status": false
+    },
+    {
+      "id": "3.9",
+      "feature": "Image with placeholder component",
+      "track": "frontend-public",
+      "depends_on": ["1.2"],
+      "test": "Shows skeleton while loading, uses next/image",
+      "status": false
+    },
+    {
+      "id": "4.1",
+      "feature": "Hero section with rotating text",
+      "track": "frontend-public",
+      "depends_on": ["3.6", "3.5"],
+      "test": "20 Years headline, rotating words, CTA button works",
+      "status": false
+    },
+    {
+      "id": "4.2",
+      "feature": "Hero floating shapes with parallax",
+      "track": "frontend-public",
+      "depends_on": ["3.5", "3.8"],
+      "test": "Shapes move on scroll at different rates",
+      "status": false
+    },
+    {
+      "id": "4.3",
+      "feature": "Stats section (4 stats bar)",
+      "track": "frontend-public",
+      "depends_on": ["3.4", "3.7"],
+      "test": "Shows 20+ years, DepEd, N-G6, 2783 FB community",
+      "status": false
+    },
+    {
+      "id": "4.4",
+      "feature": "About preview section",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Text + image renders, Learn More link to /about",
+      "status": false
+    },
+    {
+      "id": "4.5",
+      "feature": "Programs overview section",
+      "track": "frontend-public",
+      "depends_on": ["3.2", "3.7"],
+      "test": "Preschool + Elementary cards with icons",
+      "status": false
+    },
+    {
+      "id": "4.6",
+      "feature": "Testimonial carousel with Swiper",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Swiper slides work, pagination dots, autoplay",
+      "status": false
+    },
+    {
+      "id": "4.7",
+      "feature": "CTA banner section",
+      "track": "frontend-public",
+      "depends_on": ["3.1"],
+      "test": "Enroll Now CTA with amber background",
+      "status": false
+    },
+    {
+      "id": "4.8",
+      "feature": "News/Events preview section",
+      "track": "frontend-public",
+      "depends_on": ["3.2", "3.7"],
+      "test": "3 recent events display, View All link works",
+      "status": false
+    },
+    {
+      "id": "4.9",
+      "feature": "Home page assembly",
+      "track": "frontend-public",
+      "depends_on": ["4.1", "4.2", "4.3", "4.4", "4.5", "4.6", "4.7", "4.8"],
+      "test": "All sections render, page scrolls smooth",
+      "status": false
+    },
+    {
+      "id": "5.1",
+      "feature": "About page hero",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Title, breadcrumb, decorative shape render",
+      "status": false
+    },
+    {
+      "id": "5.2",
+      "feature": "School overview section",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "History text, founding year 2005, 20 years",
+      "status": false
+    },
+    {
+      "id": "5.3",
+      "feature": "Mission/Values section",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "CEdNet membership, values cards display",
+      "status": false
+    },
+    {
+      "id": "5.4",
+      "feature": "Timeline section",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Key milestones 2005-2025 visualized",
+      "status": false
+    },
+    {
+      "id": "5.5",
+      "feature": "Affiliations section",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "CEdNet, DepEd badges/logos display",
+      "status": false
+    },
+    {
+      "id": "5.6",
+      "feature": "About page assembly",
+      "track": "frontend-public",
+      "depends_on": ["5.1", "5.2", "5.3", "5.4", "5.5"],
+      "test": "Page renders with all sections",
+      "status": false
+    },
+    {
+      "id": "6.1",
+      "feature": "Academics page hero",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Title and decorative elements render",
+      "status": false
+    },
+    {
+      "id": "6.2",
+      "feature": "Programs section (Preschool/Elementary)",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "Preschool (Nursery, Kinder), Elementary (G1-6)",
+      "status": false
+    },
+    {
+      "id": "6.3",
+      "feature": "Curriculum section",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "K-12, MATATAG, phonics, values info displays",
+      "status": false
+    },
+    {
+      "id": "6.4",
+      "feature": "Assessment section",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "Quarterly grading, achievers recognition info",
+      "status": false
+    },
+    {
+      "id": "6.5",
+      "feature": "Academics page assembly",
+      "track": "frontend-public",
+      "depends_on": ["6.1", "6.2", "6.3", "6.4"],
+      "test": "Page renders, navigation works",
+      "status": false
+    },
+    {
+      "id": "7.1",
+      "feature": "Admission page hero",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Now Enrolling headline displays",
+      "status": false
+    },
+    {
+      "id": "7.2",
+      "feature": "Enrollment info section",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "Levels offered, summer classes info",
+      "status": false
+    },
+    {
+      "id": "7.3",
+      "feature": "Requirements checklist section",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "PSA, Report Card, GMC, photos, medical listed",
+      "status": false
+    },
+    {
+      "id": "7.4",
+      "feature": "How to apply section",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Steps with icons display",
+      "status": false
+    },
+    {
+      "id": "7.5",
+      "feature": "Visit us CTA with map preview",
+      "track": "frontend-public",
+      "depends_on": ["3.1"],
+      "test": "Address, landmark, link to contact page",
+      "status": false
+    },
+    {
+      "id": "7.6",
+      "feature": "Admission page assembly",
+      "track": "frontend-public",
+      "depends_on": ["7.1", "7.2", "7.3", "7.4", "7.5"],
+      "test": "Page complete with all sections",
+      "status": false
+    },
+    {
+      "id": "8.1",
+      "feature": "Events page hero",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Title, breadcrumb display",
+      "status": false
+    },
+    {
+      "id": "8.2",
+      "feature": "Featured event (Goldenberg Concert)",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "Large card, image, Manila Bulletin mention",
+      "status": false
+    },
+    {
+      "id": "8.3",
+      "feature": "Events grid section",
+      "track": "frontend-public",
+      "depends_on": ["3.2", "3.7"],
+      "test": "6+ events in responsive grid layout",
+      "status": false
+    },
+    {
+      "id": "8.4",
+      "feature": "School calendar section",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Monthly activities table displays",
+      "status": false
+    },
+    {
+      "id": "8.5",
+      "feature": "Events page assembly",
+      "track": "frontend-public",
+      "depends_on": ["8.1", "8.2", "8.3", "8.4"],
+      "test": "All events render correctly",
+      "status": false
+    },
+    {
+      "id": "9.1",
+      "feature": "Faculty page hero",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Title, decorative elements render",
+      "status": false
+    },
+    {
+      "id": "9.2",
+      "feature": "School head feature card",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "Orlando Fumera Jr. larger card displays",
+      "status": false
+    },
+    {
+      "id": "9.3",
+      "feature": "Teaching staff grid",
+      "track": "frontend-public",
+      "depends_on": ["3.2", "3.7"],
+      "test": "Staff cards with placeholder avatars",
+      "status": false
+    },
+    {
+      "id": "9.4",
+      "feature": "Faculty page assembly",
+      "track": "frontend-public",
+      "depends_on": ["9.1", "9.2", "9.3"],
+      "test": "Page renders all faculty info",
+      "status": false
+    },
+    {
+      "id": "10.1",
+      "feature": "Contact page hero",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "Title, contact info summary displays",
+      "status": false
+    },
+    {
+      "id": "10.2",
+      "feature": "Contact info section",
+      "track": "frontend-public",
+      "depends_on": ["3.2"],
+      "test": "Phone numbers, address, FB links correct",
+      "status": false
+    },
+    {
+      "id": "10.3",
+      "feature": "Google Maps embed",
+      "track": "frontend-public",
+      "depends_on": ["1.1"],
+      "test": "Map loads, shows 14.5761, 121.03805",
+      "status": false
+    },
+    {
+      "id": "10.4",
+      "feature": "Contact form with Formspree placeholder",
+      "track": "frontend-public",
+      "depends_on": ["3.1"],
+      "test": "Name, email, phone, message fields render",
+      "status": false
+    },
+    {
+      "id": "10.5",
+      "feature": "Transportation section",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "MRT stations, landmarks info displays",
+      "status": false
+    },
+    {
+      "id": "10.6",
+      "feature": "Contact page assembly",
+      "track": "frontend-public",
+      "depends_on": ["10.1", "10.2", "10.3", "10.4", "10.5"],
+      "test": "Page complete, form structure ready",
+      "status": false
+    },
+    {
+      "id": "11.1",
+      "feature": "Add scroll animations to all sections",
+      "track": "frontend-public",
+      "depends_on": ["4.9", "5.6", "6.5", "7.6", "8.5", "9.4", "10.6"],
+      "test": "Elements animate on scroll-in across pages",
+      "status": false
+    },
+    {
+      "id": "11.2",
+      "feature": "Add parallax to decorative elements",
+      "track": "frontend-public",
+      "depends_on": ["11.1"],
+      "test": "Shapes move at different rates on scroll",
+      "status": false
+    },
+    {
+      "id": "11.3",
+      "feature": "Page transition animations",
+      "track": "frontend-public",
+      "depends_on": ["11.1"],
+      "test": "Smooth fade between page navigations",
+      "status": false
+    },
+    {
+      "id": "11.4",
+      "feature": "Hover state polish",
+      "track": "frontend-public",
+      "depends_on": ["11.1"],
+      "test": "All interactive elements have hover feedback",
+      "status": false
+    },
+    {
+      "id": "11.5",
+      "feature": "Loading states",
+      "track": "frontend-public",
+      "depends_on": ["11.1"],
+      "test": "Skeleton screens, image placeholders work",
+      "status": false
+    },
+    {
+      "id": "12.1",
+      "feature": "Setup metadata for all pages",
+      "track": "frontend-public",
+      "depends_on": ["4.9", "5.6", "6.5", "7.6", "8.5", "9.4", "10.6"],
+      "test": "Title, description, keywords per page correct",
+      "status": false
+    },
+    {
+      "id": "12.2",
+      "feature": "Open Graph images",
+      "track": "frontend-public",
+      "depends_on": ["12.1"],
+      "test": "OG images set for social sharing",
+      "status": false
+    },
+    {
+      "id": "12.3",
+      "feature": "Sitemap generation",
+      "track": "frontend-public",
+      "depends_on": ["12.1"],
+      "test": "sitemap.xml generated in output",
+      "status": false
+    },
+    {
+      "id": "12.4",
+      "feature": "Robots.txt",
+      "track": "frontend-public",
+      "depends_on": ["12.1"],
+      "test": "robots.txt allows crawling",
+      "status": false
+    },
+    {
+      "id": "12.5",
+      "feature": "Structured data (JSON-LD)",
+      "track": "frontend-public",
+      "depends_on": ["12.1"],
+      "test": "School organization schema in head",
+      "status": false
+    },
+    {
+      "id": "12.6",
+      "feature": "GA4 placeholder setup",
+      "track": "frontend-public",
+      "depends_on": ["12.1"],
+      "test": "GA4 script with placeholder tracking ID",
+      "status": false
+    },
+    {
+      "id": "13.1",
+      "feature": "Tablet responsive adjustments",
+      "track": "frontend-public",
+      "depends_on": ["11.4"],
+      "test": "All pages work on iPad 768px",
+      "status": false
+    },
+    {
+      "id": "13.2",
+      "feature": "Mobile responsive adjustments",
+      "track": "frontend-public",
+      "depends_on": ["13.1"],
+      "test": "All pages work on mobile 375px",
+      "status": false
+    },
+    {
+      "id": "13.3",
+      "feature": "Cross-browser testing",
+      "track": "frontend-public",
+      "depends_on": ["13.2"],
+      "test": "Chrome, Firefox, Safari, Edge OK",
+      "status": false
+    },
+    {
+      "id": "13.4",
+      "feature": "Performance audit (Lighthouse)",
+      "track": "frontend-public",
+      "depends_on": ["13.3"],
+      "test": "Score 90+ on Performance, A11y, SEO",
+      "status": false
+    },
+    {
+      "id": "13.5",
+      "feature": "Final static export",
+      "track": "frontend-public",
+      "depends_on": ["13.4"],
+      "test": "out/ folder ready for Vercel deployment",
+      "status": false
+    }
+  ]
+}
