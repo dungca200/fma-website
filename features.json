@@ -271,7 +271,7 @@
         "3.5"
       ],
       "test": "20 Years headline, rotating words, CTA button works",
-      "status": false
+      "status": true
     },
     {
       "id": "4.2",
@@ -282,7 +282,7 @@
         "3.8"
       ],
       "test": "Shapes move on scroll at different rates",
-      "status": false
+      "status": true
     },
     {
       "id": "4.3",
@@ -293,7 +293,7 @@
         "3.7"
       ],
       "test": "Shows 20+ years, DepEd, N-G6, 2783 FB community",
-      "status": false
+      "status": true
     },
     {
       "id": "4.4",
@@ -303,7 +303,7 @@
         "3.7"
       ],
       "test": "Text + image renders, Learn More link to /about",
-      "status": false
+      "status": true
     },
     {
       "id": "4.5",
@@ -314,7 +314,7 @@
         "3.7"
       ],
       "test": "Preschool + Elementary cards flip on hover",
-      "status": false
+      "status": true
     },
     {
       "id": "4.6",
@@ -325,7 +325,7 @@
         "3.7"
       ],
       "test": "For Parents and For Students quick-link cards display",
-      "status": false
+      "status": true
     },
     {
       "id": "4.7",
@@ -335,7 +335,7 @@
         "3.7"
       ],
       "test": "Swiper slides work, pagination dots, autoplay",
-      "status": false
+      "status": true
     },
     {
       "id": "4.8",
@@ -345,7 +345,7 @@
         "3.1"
       ],
       "test": "Enroll Now CTA with amber background",
-      "status": false
+      "status": true
     },
     {
       "id": "4.9",
@@ -356,7 +356,7 @@
         "3.7"
       ],
       "test": "3 recent events display, View All link works",
-      "status": false
+      "status": true
     },
     {
       "id": "4.10",
@@ -367,7 +367,7 @@
         "3.11"
       ],
       "test": "Featured event with Manila Bulletin badge",
-      "status": false
+      "status": true
     },
     {
       "id": "4.11",
@@ -386,7 +386,7 @@
         "4.10"
       ],
       "test": "All sections render, page scrolls smooth",
-      "status": false
+      "status": true
     },
     {
       "id": "5.1",
@@ -396,7 +396,7 @@
         "3.7"
       ],
       "test": "Title, breadcrumb, decorative shape render",
-      "status": false
+      "status": true
     },
     {
       "id": "5.2",
@@ -406,7 +406,7 @@
         "3.7"
       ],
       "test": "History text, founding year 2005, 20 years",
-      "status": false
+      "status": true
     },
     {
       "id": "5.3",
@@ -417,7 +417,7 @@
         "3.12"
       ],
       "test": "Orlando Fumera photo + message displays",
-      "status": false
+      "status": true
     },
     {
       "id": "5.4",
@@ -427,7 +427,7 @@
         "3.2"
       ],
       "test": "CEdNet membership, values cards display",
-      "status": false
+      "status": true
     },
     {
       "id": "5.5",
@@ -437,7 +437,7 @@
         "3.7"
       ],
       "test": "Key milestones 2005-2025 visualized",
-      "status": false
+      "status": true
     },
     {
       "id": "5.6",
@@ -447,7 +447,7 @@
         "3.2"
       ],
       "test": "CEdNet, DepEd badges/logos display",
-      "status": false
+      "status": true
     },
     {
       "id": "5.7",
@@ -462,7 +462,7 @@
         "5.6"
       ],
       "test": "Page renders with all sections",
-      "status": false
+      "status": true
     },
     {
       "id": "6.1",
