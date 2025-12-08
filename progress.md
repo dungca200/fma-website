@@ -17,14 +17,23 @@
 | 1.5 | Setup static export for Vercel | Dec 9, 2025 |
 | 1.6 | Create school constants file | Dec 9, 2025 |
 | 1.7 | Setup dark mode | Dec 9, 2025 |
+| 2.1 | Root layout + metadata | Dec 9, 2025 |
+| 2.2 | Sticky header w/ blur backdrop | Dec 9, 2025 |
+| 2.3 | Desktop navigation | Dec 9, 2025 |
+| 2.4 | Mobile hamburger menu | Dec 9, 2025 |
+| 2.5 | Footer | Dec 9, 2025 |
+| 2.6 | Container component | Dec 9, 2025 |
 
-**Progress: 7/65 (10.8%)**
+**Progress: 13/65 (20%)**
 
 ---
 
 ## Current Status
 - [x] Phase 1 COMPLETE (7/7 features)
-- [ ] Phase 2: Layout (6 features)
+- [x] Phase 2 COMPLETE (6/6 features)
+- [ ] Phase 3: Shared Components (13 features)
+- [ ] Phase 4: Home Page (11 features)
+- [ ] Phase 5: About Page (7 features)
 
 ---
 
@@ -49,3 +58,10 @@
 - **Feature 1.6**: Constants file with all school data
 - **Feature 1.7**: Dark mode with next-themes + toggle component
 - Phase 1 COMPLETE
+
+### Session 4 - December 9, 2025
+- **Feature 2.1-2.6**: Layout components
+  - Header w/ sticky blur backdrop + desktop/mobile nav
+  - Footer w/ contact, links, hours, social
+  - Container component (max-w-1200px)
+- Phase 2 COMPLETE
