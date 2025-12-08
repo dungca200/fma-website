@@ -11,8 +11,9 @@
 | ID | Feature | Date |
 |----|---------|------|
 | 1.1 | Init Next.js 14 + App Router | Dec 9, 2025 |
+| 1.2 | Configure Tailwind + shadcn/ui | Dec 9, 2025 |
 
-**Progress: 1/65 (1.5%)**
+**Progress: 2/65 (3.1%)**
 
 ---
 
@@ -22,7 +23,8 @@
 - [x] CLAUDE.md updated
 - [x] Git initialized
 - [x] Next.js project scaffolded
-- [ ] Feature 1.2: Configure Tailwind + shadcn/ui
+- [x] Feature 1.2: Configure Tailwind + shadcn/ui
+- [ ] Feature 1.3: Setup design tokens
 
 ---
 
