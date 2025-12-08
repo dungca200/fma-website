@@ -12,3 +12,13 @@ node_modules/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Next.js
+.next/
+out/
+
+# MCP config
+.mcp.json
+
+# Claude settings
+.claude/

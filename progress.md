@@ -7,16 +7,18 @@
 
 ## Completed Features
 
-*None yet - project initialization in progress*
+| ID | Feature | Date |
+|----|---------|------|
+| 1.1 | Init Next.js 14 + App Router | Dec 9, 2025 |
 
 ---
 
 ## Current Status
 - [x] features.json created (57 features)
 - [x] progress.md created
-- [ ] CLAUDE.md updated
-- [ ] Git initialized
-- [ ] Next.js project scaffolded
+- [x] CLAUDE.md updated
+- [x] Git initialized
+- [x] Next.js project scaffolded
 
 ---
 
@@ -25,4 +27,6 @@
 ### Session 1 - December 9, 2025
 - Created features.json with full feature breakdown
 - Created progress.md for tracking
-- Pending: CLAUDE.md update, git init, feature 1.1
+- Updated CLAUDE.md with project specifics
+- Git init + initial commit
+- **Feature 1.1**: Next.js 14 + App Router + Tailwind configured

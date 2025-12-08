@@ -8,7 +8,7 @@
       "track": "setup",
       "depends_on": [],
       "test": "npm run dev starts, localhost:3000 loads",
-      "status": false
+      "status": true
     },
     {
       "id": "1.2",
