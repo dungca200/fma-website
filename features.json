@@ -1,6 +1,7 @@
 {
   "project": "fma-website",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "total_features": 65,
   "features": [
     {
       "id": "1.1",
@@ -48,6 +49,14 @@
       "track": "setup",
       "depends_on": ["1.1"],
       "test": "Constants importable, data matches context files",
+      "status": false
+    },
+    {
+      "id": "1.7",
+      "feature": "Setup dark mode (CSS variables + toggle)",
+      "track": "setup",
+      "depends_on": ["1.3"],
+      "test": "Toggle works, colors switch between light/dark",
       "status": false
     },
     {
@@ -171,6 +180,38 @@
       "status": false
     },
     {
+      "id": "3.10",
+      "feature": "Accordion component",
+      "track": "frontend-public",
+      "depends_on": ["1.2"],
+      "test": "Expand/collapse with smooth animation",
+      "status": false
+    },
+    {
+      "id": "3.11",
+      "feature": "Badge component",
+      "track": "frontend-public",
+      "depends_on": ["1.2"],
+      "test": "Grade level badges render with correct colors",
+      "status": false
+    },
+    {
+      "id": "3.12",
+      "feature": "Avatar component",
+      "track": "frontend-public",
+      "depends_on": ["1.2"],
+      "test": "Faculty photos display with fallback placeholder",
+      "status": false
+    },
+    {
+      "id": "3.13",
+      "feature": "3D flip card component",
+      "track": "frontend-public",
+      "depends_on": ["1.2", "3.2"],
+      "test": "Card flips on hover with front/back content",
+      "status": false
+    },
+    {
       "id": "4.1",
       "feature": "Hero section with rotating text",
       "track": "frontend-public",
@@ -204,14 +245,22 @@
     },
     {
       "id": "4.5",
-      "feature": "Programs overview section",
+      "feature": "Programs overview section (3D flip cards)",
       "track": "frontend-public",
-      "depends_on": ["3.2", "3.7"],
-      "test": "Preschool + Elementary cards with icons",
+      "depends_on": ["3.13", "3.7"],
+      "test": "Preschool + Elementary cards flip on hover",
       "status": false
     },
     {
       "id": "4.6",
+      "feature": "Persona cards section (For Parents/Students)",
+      "track": "frontend-public",
+      "depends_on": ["3.2", "3.7"],
+      "test": "For Parents and For Students quick-link cards display",
+      "status": false
+    },
+    {
+      "id": "4.7",
       "feature": "Testimonial carousel with Swiper",
       "track": "frontend-public",
       "depends_on": ["3.7"],
@@ -219,7 +268,7 @@
       "status": false
     },
     {
-      "id": "4.7",
+      "id": "4.8",
       "feature": "CTA banner section",
       "track": "frontend-public",
       "depends_on": ["3.1"],
@@ -227,7 +276,7 @@
       "status": false
     },
     {
-      "id": "4.8",
+      "id": "4.9",
       "feature": "News/Events preview section",
       "track": "frontend-public",
       "depends_on": ["3.2", "3.7"],
@@ -235,10 +284,18 @@
       "status": false
     },
     {
-      "id": "4.9",
+      "id": "4.10",
+      "feature": "Goldenberg Concert highlight",
+      "track": "frontend-public",
+      "depends_on": ["3.2", "3.11"],
+      "test": "Featured event with Manila Bulletin badge",
+      "status": false
+    },
+    {
+      "id": "4.11",
       "feature": "Home page assembly",
       "track": "frontend-public",
-      "depends_on": ["4.1", "4.2", "4.3", "4.4", "4.5", "4.6", "4.7", "4.8"],
+      "depends_on": ["4.1", "4.2", "4.3", "4.4", "4.5", "4.6", "4.7", "4.8", "4.9", "4.10"],
       "test": "All sections render, page scrolls smooth",
       "status": false
     },
@@ -260,6 +317,14 @@
     },
     {
       "id": "5.3",
+      "feature": "School head message section",
+      "track": "frontend-public",
+      "depends_on": ["3.2", "3.12"],
+      "test": "Orlando Fumera photo + message displays",
+      "status": false
+    },
+    {
+      "id": "5.4",
       "feature": "Mission/Values section",
       "track": "frontend-public",
       "depends_on": ["3.2"],
@@ -267,7 +332,7 @@
       "status": false
     },
     {
-      "id": "5.4",
+      "id": "5.5",
       "feature": "Timeline section",
       "track": "frontend-public",
       "depends_on": ["3.7"],
@@ -275,7 +340,7 @@
       "status": false
     },
     {
-      "id": "5.5",
+      "id": "5.6",
       "feature": "Affiliations section",
       "track": "frontend-public",
       "depends_on": ["3.2"],
@@ -283,10 +348,10 @@
       "status": false
     },
     {
-      "id": "5.6",
+      "id": "5.7",
       "feature": "About page assembly",
       "track": "frontend-public",
-      "depends_on": ["5.1", "5.2", "5.3", "5.4", "5.5"],
+      "depends_on": ["5.1", "5.2", "5.3", "5.4", "5.5", "5.6"],
       "test": "Page renders with all sections",
       "status": false
     },
@@ -300,22 +365,30 @@
     },
     {
       "id": "6.2",
-      "feature": "Programs section (Preschool/Elementary)",
+      "feature": "Programs section (3D flip cards)",
       "track": "frontend-public",
-      "depends_on": ["3.2"],
-      "test": "Preschool (Nursery, Kinder), Elementary (G1-6)",
+      "depends_on": ["3.13"],
+      "test": "Preschool (Nursery, Kinder), Elementary (G1-6) flip cards",
       "status": false
     },
     {
       "id": "6.3",
-      "feature": "Curriculum section",
+      "feature": "Curriculum accordion",
       "track": "frontend-public",
-      "depends_on": ["3.7"],
-      "test": "K-12, MATATAG, phonics, values info displays",
+      "depends_on": ["3.10"],
+      "test": "K-12, MATATAG, Phonics sections expand/collapse",
       "status": false
     },
     {
       "id": "6.4",
+      "feature": "Grade level progression",
+      "track": "frontend-public",
+      "depends_on": ["3.2", "3.11"],
+      "test": "Grade cards with progression arrows display",
+      "status": false
+    },
+    {
+      "id": "6.5",
       "feature": "Assessment section",
       "track": "frontend-public",
       "depends_on": ["3.2"],
@@ -323,10 +396,10 @@
       "status": false
     },
     {
-      "id": "6.5",
+      "id": "6.6",
       "feature": "Academics page assembly",
       "track": "frontend-public",
-      "depends_on": ["6.1", "6.2", "6.3", "6.4"],
+      "depends_on": ["6.1", "6.2", "6.3", "6.4", "6.5"],
       "test": "Page renders, navigation works",
       "status": false
     },
@@ -351,7 +424,7 @@
       "feature": "Requirements checklist section",
       "track": "frontend-public",
       "depends_on": ["3.2"],
-      "test": "PSA, Report Card, GMC, photos, medical listed",
+      "test": "PSA, Report Card, GMC, photos, medical listed with icons",
       "status": false
     },
     {
@@ -390,8 +463,8 @@
       "id": "8.2",
       "feature": "Featured event (Goldenberg Concert)",
       "track": "frontend-public",
-      "depends_on": ["3.2"],
-      "test": "Large card, image, Manila Bulletin mention",
+      "depends_on": ["3.2", "3.11"],
+      "test": "Large card, image, Manila Bulletin badge",
       "status": false
     },
     {
@@ -430,7 +503,7 @@
       "id": "9.2",
       "feature": "School head feature card",
       "track": "frontend-public",
-      "depends_on": ["3.2"],
+      "depends_on": ["3.2", "3.12"],
       "test": "Orlando Fumera Jr. larger card displays",
       "status": false
     },
@@ -438,8 +511,8 @@
       "id": "9.3",
       "feature": "Teaching staff grid",
       "track": "frontend-public",
-      "depends_on": ["3.2", "3.7"],
-      "test": "Staff cards with placeholder avatars",
+      "depends_on": ["3.2", "3.12", "3.7"],
+      "test": "Staff avatar cards with placeholder for unknown",
       "status": false
     },
     {
@@ -492,9 +565,17 @@
     },
     {
       "id": "10.6",
+      "feature": "Operating hours section",
+      "track": "frontend-public",
+      "depends_on": ["3.7"],
+      "test": "School schedule/hours display",
+      "status": false
+    },
+    {
+      "id": "10.7",
       "feature": "Contact page assembly",
       "track": "frontend-public",
-      "depends_on": ["10.1", "10.2", "10.3", "10.4", "10.5"],
+      "depends_on": ["10.1", "10.2", "10.3", "10.4", "10.5", "10.6"],
       "test": "Page complete, form structure ready",
       "status": false
     },
@@ -502,7 +583,7 @@
       "id": "11.1",
       "feature": "Add scroll animations to all sections",
       "track": "frontend-public",
-      "depends_on": ["4.9", "5.6", "6.5", "7.6", "8.5", "9.4", "10.6"],
+      "depends_on": ["4.11", "5.7", "6.6", "7.6", "8.5", "9.4", "10.7"],
       "test": "Elements animate on scroll-in across pages",
       "status": false
     },
@@ -542,7 +623,7 @@
       "id": "12.1",
       "feature": "Setup metadata for all pages",
       "track": "frontend-public",
-      "depends_on": ["4.9", "5.6", "6.5", "7.6", "8.5", "9.4", "10.6"],
+      "depends_on": ["4.11", "5.7", "6.6", "7.6", "8.5", "9.4", "10.7"],
       "test": "Title, description, keywords per page correct",
       "status": false
     },
@@ -584,6 +665,14 @@
       "track": "frontend-public",
       "depends_on": ["12.1"],
       "test": "GA4 script with placeholder tracking ID",
+      "status": false
+    },
+    {
+      "id": "12.7",
+      "feature": "WCAG 2.1 AA audit",
+      "track": "frontend-public",
+      "depends_on": ["11.4"],
+      "test": "A11y issues identified and fixed",
       "status": false
     },
     {
