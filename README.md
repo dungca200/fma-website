@@ -22,6 +22,9 @@ Marketing website for Future Minds Academy, a DepEd-recognized private preschool
 ## Getting Started
 
 ```bash
+# Navigate to the app folder
+cd fma-website
+
 # Install dependencies
 npm install
 
@@ -38,23 +41,20 @@ npx serve out
 ## Project Structure
 
 ```
-src/
-├── app/                 # Next.js App Router pages
-│   ├── page.tsx         # Home
-│   ├── about/
-│   ├── academics/
-│   ├── admission/
-│   ├── events/
-│   ├── faculty/
-│   └── contact/
-├── components/
-│   ├── layout/          # Header, Footer, Container
-│   ├── shared/          # Reusable components
-│   ├── ui/              # shadcn/ui components
-│   └── providers/       # Theme, transitions
-└── lib/
-    ├── constants.ts     # School data
-    └── utils.ts         # Utilities
+FMA/
+├── .env                     # Environment variables (root level)
+├── context/                 # School data files
+├── fma-website/             # Next.js application
+│   ├── src/
+│   │   ├── app/             # Pages
+│   │   ├── components/      # React components
+│   │   └── lib/             # Utilities
+│   ├── package.json
+│   └── ...
+├── CLAUDE.md
+├── features.json
+├── progress.md
+└── README.md
 ```
 
 ## Design System
@@ -72,11 +72,13 @@ src/
 
 1. Push to GitHub
 2. Import at [vercel.com/new](https://vercel.com/new)
-3. Deploy automatically
+3. Set Root Directory to `fma-website`
+4. Deploy automatically
 
 ### Manual
 
 ```bash
+cd fma-website
 npm run build
 # Upload `out/` folder to any static host
 ```

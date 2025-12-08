@@ -1,24 +1,26 @@
-# Environment variables (contains API keys)
+# Environment variables
 .env
 .env.local
 .env.*.local
 
+# Dependencies
+node_modules/
+
+# Next.js build (in fma-website/)
+fma-website/.next/
+fma-website/node_modules/
+fma-website/out/
+
 # ElevenLabs output
 /tmp/elevenlabs/
-
-# Node modules
-node_modules/
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# Next.js
-.next/
-out/
+# IDE
+.vscode/
+.idea/
 
-# MCP config
+# MCP config (contains tokens)
 .mcp.json
-
-# Claude settings
-.claude/
