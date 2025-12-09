@@ -18,9 +18,21 @@
     --primary: 199 89% 48%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: Amber #f59e0b = hsl(38, 92%, 50%) */
-    --secondary: 38 92% 50%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary: Light Sky Blue (monochromatic blue palette) */
+    --secondary: 199 92% 64%;
+    --secondary-foreground: 199 95% 15%;
+
+    /* Blue scale for monochromatic palette */
+    --blue-50: 199 95% 97%;
+    --blue-100: 199 95% 93%;
+    --blue-200: 199 95% 85%;
+    --blue-300: 199 95% 74%;
+    --blue-400: 199 92% 64%;
+    --blue-500: 199 89% 48%;
+    --blue-600: 199 89% 39%;
+    --blue-700: 199 91% 31%;
+    --blue-800: 199 94% 24%;
+    --blue-900: 199 95% 18%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%; /* #64748b - slate-500 */
@@ -70,8 +82,21 @@
     --primary: 199 89% 48%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 38 92% 50%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary: Light Sky Blue (monochromatic) */
+    --secondary: 199 92% 64%;
+    --secondary-foreground: 199 95% 15%;
+
+    /* Blue scale for dark mode */
+    --blue-50: 199 95% 97%;
+    --blue-100: 199 95% 93%;
+    --blue-200: 199 95% 85%;
+    --blue-300: 199 95% 74%;
+    --blue-400: 199 92% 64%;
+    --blue-500: 199 89% 48%;
+    --blue-600: 199 89% 39%;
+    --blue-700: 199 91% 31%;
+    --blue-800: 199 94% 24%;
+    --blue-900: 199 95% 18%;
 
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
@@ -169,9 +194,9 @@
     background-image: linear-gradient(135deg, #38bdf8, #0284c7);
   }
 
-  .text-gradient-amber {
+  .text-gradient-light {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #fbbf24, #f59e0b);
+    background-image: linear-gradient(135deg, #7dd3fc, #38bdf8);
   }
 
   /* Number styling for cards */
@@ -218,7 +243,7 @@
   }
 
   .section-accent {
-    @apply bg-gradient-to-br from-primary/5 to-secondary/5;
+    @apply bg-gradient-to-br from-primary/5 via-secondary/3 to-primary/5;
   }
 }
 

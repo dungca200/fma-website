@@ -85,7 +85,7 @@ export default function EventsPage() {
                             Featured Event
                           </Badge>
                           {featuredEvent.media?.map((outlet) => (
-                            <Badge key={outlet} className="bg-secondary text-secondary-foreground border-0">
+                            <Badge key={outlet} className="bg-blue-400 text-white border-0">
                               {outlet}
                             </Badge>
                           ))}
@@ -132,7 +132,7 @@ export default function EventsPage() {
                 <StaggerItem key={event.title}>
                   <Card className="h-full group hover-lift overflow-hidden">
                     <CardContent className="p-0">
-                      <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+                      <div className="aspect-video bg-gradient-to-br from-blue-500/10 to-blue-600/10 flex items-center justify-center">
                         <Calendar className="w-12 h-12 text-primary/30 group-hover:text-primary/50 transition-colors" />
                       </div>
                       <div className="p-6">
@@ -226,8 +226,8 @@ export default function EventsPage() {
               <ScrollAnimation direction="right">
                 <Card className="h-full hover-lift">
                   <CardContent className="p-8">
-                    <div className="h-14 w-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
-                      <Calendar className="h-7 w-7 text-secondary" />
+                    <div className="h-14 w-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
+                      <Calendar className="h-7 w-7 text-blue-500" />
                     </div>
                     <h3 className="font-display text-xl font-semibold mb-3">
                       Cultural Celebrations

@@ -114,12 +114,12 @@ export default function AboutPage() {
               <ScrollAnimation direction="left">
                 <div className="relative">
                   <div className="aspect-[4/3] bg-muted rounded-card-xl overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center">
                       <BookOpen className="w-32 h-32 text-primary/40" />
                     </div>
                   </div>
                   {/* Floating badge */}
-                  <div className="absolute -bottom-6 -right-6 bg-secondary text-white p-6 rounded-card-lg shadow-xl">
+                  <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-card-lg shadow-xl">
                     <div className="text-3xl font-display font-bold">20+</div>
                     <div className="text-sm opacity-90">Years</div>
                   </div>
@@ -182,9 +182,9 @@ export default function AboutPage() {
               </ScrollAnimation>
 
               <ScrollAnimation direction="right">
-                <Card className="h-full border-l-4 border-l-secondary">
+                <Card className="h-full border-l-4 border-l-blue-400">
                   <CardContent className="p-8">
-                    <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-secondary/10 text-secondary mb-6">
+                    <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-blue-500/10 text-blue-500 mb-6">
                       <Star className="h-7 w-7" />
                     </div>
                     <h3 className="text-display-sm font-display mb-4">Our Vision</h3>

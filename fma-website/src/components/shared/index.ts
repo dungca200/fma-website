@@ -19,6 +19,10 @@ export { StatCard } from "./stat-card";
 export { FlipCard } from "./flip-card";
 export { NumberedCard, NumberedCardGrid, NumberedCardItem } from "./numbered-card";
 
+// Interactive Components
+export { InteractiveTabs } from "./interactive-tabs";
+export type { Tab } from "./interactive-tabs";
+
 // Carousels
 export { HeroCarousel } from "./hero-carousel";
 export type { HeroSlide } from "./hero-carousel";

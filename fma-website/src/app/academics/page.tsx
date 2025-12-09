@@ -317,7 +317,7 @@ export default function AcademicsPage() {
                     <div className="space-y-6">
                       <div className="flex items-center justify-between p-4 bg-white/10 rounded-lg">
                         <div>
-                          <Badge className="bg-secondary text-secondary-foreground mb-2">
+                          <Badge className="bg-blue-400 text-white mb-2">
                             With Highest Honors
                           </Badge>
                           <p className="text-sm text-white/70">Top academic achievement</p>
@@ -352,7 +352,7 @@ export default function AcademicsPage() {
 
         {/* Final CTA */}
         <section className="py-section-lg relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary to-amber-600" />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-primary to-blue-700" />
           <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
 
           <Container className="relative z-10">
@@ -368,7 +368,7 @@ export default function AcademicsPage() {
                 <div className="flex gap-4 justify-center flex-wrap">
                   <Button
                     size="lg"
-                    className="bg-white text-secondary hover:bg-white/90 shadow-xl"
+                    className="bg-white text-primary hover:bg-white/90 shadow-xl"
                     asChild
                   >
                     <Link href="/admission">

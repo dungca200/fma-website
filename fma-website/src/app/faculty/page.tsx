@@ -224,12 +224,12 @@ export default function FacultyPage() {
               <ScrollAnimation direction="right">
                 <div className="relative">
                   <div className="aspect-square bg-white/5 rounded-card-xl overflow-hidden border border-white/10">
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center">
                       <GraduationCap className="w-32 h-32 text-white/20" />
                     </div>
                   </div>
                   {/* Floating badge */}
-                  <div className="absolute -bottom-6 -left-6 bg-primary text-white p-6 rounded-card-lg shadow-xl">
+                  <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-card-lg shadow-xl">
                     <div className="text-3xl font-display font-bold">Join</div>
                     <div className="text-sm opacity-90">Our Team</div>
                   </div>

@@ -445,3 +445,92 @@ export const buttonUnderline: Variants = {
     transition: { duration: 0.3, ease: easing.easeOut },
   },
 };
+
+// ===== INTERACTIVE TAB VARIANTS (SIMPL-inspired) =====
+
+export const tabContent: Variants = {
+  hidden: {
+    opacity: 0,
+    height: 0,
+    transition: { duration: 0.3, ease: easing.easeInOut }
+  },
+  visible: {
+    opacity: 1,
+    height: "auto",
+    transition: {
+      height: { duration: 0.4, ease: easing.easeOut },
+      opacity: { duration: 0.3, delay: 0.1 }
+    },
+  },
+};
+
+export const tabIndicator: Variants = {
+  initial: { left: 0 },
+  animate: (index: number) => ({
+    left: `${index * 100}%`,
+    transition: { duration: 0.3, ease: easing.easeOut },
+  }),
+};
+
+export const tabPanel: Variants = {
+  hidden: { opacity: 0, x: 20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4, ease: easing.easeOut },
+  },
+  exit: {
+    opacity: 0,
+    x: -20,
+    transition: { duration: 0.3, ease: easing.easeInOut },
+  },
+};
+
+export const panelImage: Variants = {
+  hidden: { opacity: 0, scale: 1.05 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.6, ease: easing.easeOut },
+  },
+};
+
+// ===== KEN BURNS EFFECT =====
+
+export const kenBurns: Variants = {
+  initial: { scale: 1 },
+  animate: {
+    scale: 1.05,
+    transition: { duration: 8, ease: "linear" },
+  },
+};
+
+export const kenBurnsReverse: Variants = {
+  initial: { scale: 1.05 },
+  animate: {
+    scale: 1,
+    transition: { duration: 8, ease: "linear" },
+  },
+};
+
+// ===== ENHANCED STAGGER FOR TABS =====
+
+export const staggerTabs: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+export const tabItem: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3, ease: easing.easeOut },
+  },
+};

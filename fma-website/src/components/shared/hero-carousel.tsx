@@ -5,9 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { heroSlide, heroText, fadeUp } from "@/lib/animations";
+import { heroSlide, heroText, fadeUp, kenBurns } from "@/lib/animations";
 import { Container } from "@/components/layout";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export interface HeroSlide {
   headline: string;
@@ -155,33 +156,60 @@ export function HeroCarousel({
             </AnimatePresence>
           </div>
 
-          {/* Visual element - placeholder for image */}
+          {/* Visual element - Hero Image with Ken Burns */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             className="hidden lg:block"
           >
-            <div className="relative aspect-square max-w-md mx-auto">
-              {/* Decorative circles */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-72 w-72 rounded-full border-2 border-white/10 animate-pulse" />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-56 w-56 rounded-full border border-white/20" />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-40 w-40 rounded-full bg-gradient-to-br from-sky-400/30 to-sky-600/30 backdrop-blur-sm" />
-              </div>
-              {/* Center content */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <div className="text-7xl font-display font-bold">20+</div>
-                  <div className="text-sm uppercase tracking-widest text-sky-200">
-                    Years
+            <div className="relative aspect-[4/3] max-w-lg mx-auto">
+              {/* Image container with rounded corners and Ken Burns */}
+              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    variants={kenBurns}
+                    initial="initial"
+                    animate="animate"
+                    className="absolute inset-0"
+                  >
+                    {currentSlide.image ? (
+                      <Image
+                        src={currentSlide.image}
+                        alt={currentSlide.headline}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 1024px) 100vw, 512px"
+                        priority
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-blue-400 to-blue-600" />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Gradient overlay for text contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+                {/* Badge overlay */}
+                <div className="absolute bottom-4 right-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg">
+                  <div className="text-center">
+                    <div className="text-3xl font-display font-bold text-primary">20+</div>
+                    <div className="text-xs uppercase tracking-wider text-muted-foreground">
+                      Years of Excellence
+                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* Decorative elements around the image */}
+              <div className="absolute -top-4 -left-4 w-24 h-24 bg-blue-400/20 rounded-full blur-2xl" />
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/20 rounded-full blur-2xl" />
+
+              {/* Floating accent shapes */}
+              <div className="absolute -top-2 right-12 w-4 h-4 bg-blue-300 rounded-full animate-float" />
+              <div className="absolute bottom-8 -left-2 w-3 h-3 bg-blue-200 rounded-full animate-float" style={{ animationDelay: "1s" }} />
             </div>
           </motion.div>
         </div>

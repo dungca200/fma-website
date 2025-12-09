@@ -8,72 +8,86 @@ import {
   StaggerContainer,
   StaggerItem,
   HeroCarousel,
-  NumberedCard,
-  NumberedCardGrid,
-  NumberedCardItem,
+  InteractiveTabs,
   TestimonialCarousel,
   Card,
   CardContent,
   Badge,
 } from "@/components/shared";
-import type { HeroSlide, Testimonial } from "@/components/shared";
+import type { HeroSlide, Testimonial, Tab } from "@/components/shared";
 import { SCHOOL, STATS, PROGRAMS, EVENTS } from "@/lib/constants";
 
-// Hero slides with new marketing copy
+// Hero slides with new marketing copy and images
 const heroSlides: HeroSlide[] = [
   {
     headline: "Building Strong Foundations for 20 Years",
     subheadline: "Ensuring a strong foundation for every child's educational journey from preschool to primary school",
     cta: { text: "Enroll Now", href: "/admission" },
+    image: "/images/hero/hero-1.jpg",
   },
   {
     headline: "Where Every Child's Potential is Nurtured",
     subheadline: "Small class sizes, personalized attention, and values-based education that shapes future leaders",
     cta: { text: "Meet Our Faculty", href: "/faculty" },
+    image: "/images/hero/hero-2.jpg",
   },
   {
     headline: "DepEd Recognized Excellence",
     subheadline: "Following the K-12 curriculum with a commitment to academic excellence and character development",
     cta: { text: "Explore Programs", href: "/academics" },
+    image: "/images/hero/hero-3.jpg",
   },
   {
     headline: "Join the FMA Family",
     subheadline: "Be part of a community that celebrates achievements and creates lasting memories",
     cta: { text: "Contact Us", href: "/contact" },
+    image: "/images/hero/hero-4.jpg",
   },
 ];
 
-// Who is FMA for - numbered cards
-const targetAudience = [
+// Who is FMA for - Interactive Tabs
+const audienceTabs: Tab[] = [
   {
-    number: 1,
-    title: "Working Parents",
-    description: "Seeking a safe, nurturing environment with a convenient location near MRT stations and regular communication about your child's progress.",
-    icon: <Users className="h-6 w-6" />,
+    id: "parents",
+    label: "Parents",
+    title: "For Working & First-Time Parents",
+    description: "Seeking a safe, nurturing environment with convenient location near MRT stations and regular communication about your child's progress. We understand the challenges of balancing work and parenting.",
+    image: "/images/tabs/parents.jpg",
+    icon: <Users className="h-5 w-5" />,
+    features: [
+      "Safe and secure campus environment",
+      "Regular progress updates via app",
+      "Convenient location near MRT",
+      "Flexible payment options",
+    ],
   },
   {
-    number: 2,
-    title: "First-Time Parents",
-    description: "Looking for a gentle transition from home to school with caring teachers who understand early childhood development.",
-    icon: <Heart className="h-6 w-6" />,
+    id: "preschoolers",
+    label: "Preschoolers",
+    title: "For Curious Young Learners",
+    description: "Ready for fun, engaging learning experiences with supportive teachers and exciting school activities. Our play-based approach nurtures natural curiosity and love for learning.",
+    image: "/images/tabs/preschoolers.jpg",
+    icon: <Heart className="h-5 w-5" />,
+    features: [
+      "Play-based learning curriculum",
+      "Small class sizes (max 20 students)",
+      "Caring and trained teachers",
+      "Fun field trips and activities",
+    ],
   },
   {
-    number: 3,
-    title: "Values-Driven Families",
-    description: "Wanting education that integrates character formation and moral values alongside academic excellence.",
-    icon: <Star className="h-6 w-6" />,
-  },
-  {
-    number: 4,
-    title: "Curious Young Learners",
-    description: "Ready for fun, engaging learning experiences with supportive teachers and exciting school activities.",
-    icon: <BookOpen className="h-6 w-6" />,
-  },
-  {
-    number: 5,
-    title: "Mandaluyong Families",
-    description: "Seeking a neighborhood school with deep community roots and 20 years of trusted educational service.",
-    icon: <GraduationCap className="h-6 w-6" />,
+    id: "educators",
+    label: "Values-Driven",
+    title: "For Values-Driven Families",
+    description: "Wanting education that integrates character formation and moral values alongside academic excellence. We're part of CEdNet (Christian Educators' Network) for holistic development.",
+    image: "/images/tabs/educators.jpg",
+    icon: <Star className="h-5 w-5" />,
+    features: [
+      "Values integration in curriculum",
+      "Character formation programs",
+      "CEdNet member school",
+      "Community service activities",
+    ],
   },
 ];
 
@@ -127,7 +141,7 @@ export default function Home() {
           </Container>
         </section>
 
-        {/* Who is FMA For - Numbered Cards */}
+        {/* Who is FMA For - Interactive Tabs */}
         <section className="py-section bg-muted/30">
           <Container>
             <ScrollAnimation>
@@ -137,18 +151,9 @@ export default function Home() {
               />
             </ScrollAnimation>
 
-            <NumberedCardGrid className="lg:grid-cols-3">
-              {targetAudience.map((item, index) => (
-                <NumberedCardItem key={item.number}>
-                  <NumberedCard
-                    number={item.number}
-                    title={item.title}
-                    description={item.description}
-                    icon={item.icon}
-                  />
-                </NumberedCardItem>
-              ))}
-            </NumberedCardGrid>
+            <ScrollAnimation delay={0.2}>
+              <InteractiveTabs tabs={audienceTabs} />
+            </ScrollAnimation>
           </Container>
         </section>
 
@@ -277,7 +282,7 @@ export default function Home() {
                 <div className="relative z-10 p-8 md:p-12 text-white">
                   <div className="flex flex-wrap gap-2 mb-4">
                     <Badge className="bg-white/20 text-white border-0">Featured</Badge>
-                    <Badge className="bg-secondary text-white border-0">Manila Bulletin</Badge>
+                    <Badge className="bg-blue-400 text-white border-0">Manila Bulletin</Badge>
                     <Badge className="bg-white/20 text-white border-0">GMA News</Badge>
                   </div>
                   <h3 className="text-display-sm font-display mb-4">
@@ -322,9 +327,13 @@ export default function Home() {
 
         {/* Final CTA */}
         <section className="py-section-lg relative overflow-hidden">
-          {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary to-amber-600" />
+          {/* Background - Blue gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-primary to-blue-700" />
           <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+
+          {/* Decorative elements */}
+          <div className="absolute top-10 left-10 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-48 h-48 bg-blue-300/10 rounded-full blur-2xl" />
 
           {/* Content */}
           <Container className="relative z-10">
@@ -340,7 +349,7 @@ export default function Home() {
                 <div className="flex gap-4 justify-center flex-wrap">
                   <Button
                     size="lg"
-                    className="bg-white text-secondary hover:bg-white/90 shadow-xl"
+                    className="bg-white text-primary hover:bg-white/90 shadow-xl"
                     asChild
                   >
                     <Link href="/admission">
