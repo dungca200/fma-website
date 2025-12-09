@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight, Newspaper, Star, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header, Footer, Container } from "@/components/layout";
 import {
   SectionHeading,
   ScrollAnimation,
-  FloatingShapes,
+  StaggerContainer,
+  StaggerItem,
   Card,
   CardContent,
   Badge,
 } from "@/components/shared";
-import { EVENTS } from "@/lib/constants";
+import { EVENTS, CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "School Events & News | Future Minds Academy",
@@ -19,185 +20,265 @@ export const metadata: Metadata = {
     "Stay updated with FMA's latest events, activities, and achievements including the Goldenberg Concert at Malacañang.",
 };
 
+const schoolCalendar = [
+  { month: "June", activities: ["Opening of Classes", "Orientation Program"] },
+  { month: "July", activities: ["Nutrition Month", "Buwan ng Wika"] },
+  { month: "August", activities: ["Science Month", "First Quarter Exams"] },
+  { month: "September", activities: ["First Quarter Recognition", "Teachers Day"] },
+  { month: "October", activities: ["UN Week", "Earthquake Drill", "Second Quarter Exams"] },
+  { month: "November", activities: ["Second Quarter Recognition", "Nutrition Month"] },
+  { month: "December", activities: ["Christmas Program", "Vacation"] },
+  { month: "January", activities: ["Classes Resume", "Third Quarter Exams"] },
+  { month: "February", activities: ["Third Quarter Recognition", "Foundation Day"] },
+  { month: "March", activities: ["Fourth Quarter Exams", "Moving Up/Graduation"] },
+];
+
 export default function EventsPage() {
   const featuredEvent = EVENTS.find((e) => e.featured);
   const otherEvents = EVENTS.filter((e) => !e.featured);
 
-  const schoolCalendar = [
-    { month: "June", activities: ["Opening of Classes", "Orientation Program"] },
-    { month: "July", activities: ["Nutrition Month", "Buwan ng Wika"] },
-    { month: "August", activities: ["Science Month", "First Quarter Exams"] },
-    { month: "September", activities: ["First Quarter Recognition", "Teachers Day"] },
-    { month: "October", activities: ["UN Week", "Earthquake Drill", "Second Quarter Exams"] },
-    { month: "November", activities: ["Second Quarter Recognition", "Nutrition Month"] },
-    { month: "December", activities: ["Christmas Program", "Vacation"] },
-    { month: "January", activities: ["Classes Resume", "Third Quarter Exams"] },
-    { month: "February", activities: ["Third Quarter Recognition", "Foundation Day"] },
-    { month: "March", activities: ["Fourth Quarter Exams", "Moving Up/Graduation"] },
-  ];
-
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-background pt-[65px]">
-        {/* Hero */}
-        <section className="relative py-section-lg overflow-hidden bg-primary/5">
-          <FloatingShapes variant="section" />
-          <Container className="relative z-10">
-            <ScrollAnimation>
-              <div className="max-w-3xl">
-                <Badge className="mb-4">Events & News</Badge>
-                <h1 className="font-display text-display-md md:text-display-lg text-foreground mb-6">
+      <main className="min-h-screen bg-background">
+        {/* Hero Section */}
+        <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-secondary via-secondary to-amber-600">
+          {/* Background pattern */}
+          <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+          </div>
+
+          <Container className="relative z-10 py-20">
+            <div className="max-w-3xl">
+              <ScrollAnimation>
+                <Badge className="mb-6 bg-white/20 text-white border-0">
+                  <Newspaper className="h-4 w-4 mr-2" />
+                  Events & News
+                </Badge>
+                <h1 className="text-display-xl font-display text-white mb-6">
                   School Activities & Achievements
                 </h1>
-                <p className="text-xl text-muted-foreground">
-                  Stay connected with the latest happenings at Future Minds Academy
+                <p className="text-body-xl text-white/90 max-w-2xl">
+                  Stay connected with the latest happenings at Future Minds Academy.
+                  From classroom activities to national recognition.
                 </p>
-              </div>
-            </ScrollAnimation>
+              </ScrollAnimation>
+            </div>
           </Container>
         </section>
 
         {/* Featured Event - Goldenberg */}
         {featuredEvent && (
-          <section className="py-section-lg">
+          <section className="py-section">
             <Container>
               <ScrollAnimation>
-                <Card className="overflow-hidden bg-gradient-to-r from-primary to-primary-dark text-white">
-                  <CardContent className="p-8 md:p-12">
-                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="relative rounded-card-xl overflow-hidden bg-gradient-to-r from-primary to-primary-dark">
+                  <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+                  <div className="relative z-10 p-8 md:p-12">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
                       <div>
                         <div className="flex flex-wrap gap-2 mb-6">
-                          <Badge className="bg-white/20 text-white border-0">Featured Event</Badge>
+                          <Badge className="bg-white/20 text-white border-0">
+                            <Star className="h-3 w-3 mr-1" />
+                            Featured Event
+                          </Badge>
                           {featuredEvent.media?.map((outlet) => (
                             <Badge key={outlet} className="bg-secondary text-secondary-foreground border-0">
                               {outlet}
                             </Badge>
                           ))}
                         </div>
-                        <h2 className="font-display text-3xl md:text-4xl font-semibold mb-4">
+                        <h2 className="text-display-md font-display text-white mb-4">
                           {featuredEvent.title}
                         </h2>
-                        <p className="text-white/90 text-lg mb-4">
+                        <p className="text-white/90 text-body-lg mb-6 leading-relaxed">
                           {featuredEvent.description}
                         </p>
-                        <p className="text-white/70 flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
-                          {featuredEvent.date}
-                        </p>
+                        <div className="flex items-center gap-4 text-white/70">
+                          <Calendar className="w-5 h-5" />
+                          <span>{featuredEvent.date}</span>
+                        </div>
                       </div>
-                      <div className="aspect-video bg-white/10 rounded-card-lg flex items-center justify-center">
+                      <div className="aspect-video bg-white/10 rounded-card-lg flex items-center justify-center border border-white/20">
                         <div className="text-center">
-                          <Calendar className="w-16 h-16 text-white/50 mx-auto mb-4" />
-                          <p className="text-white/50">Event Photo</p>
+                          <div className="h-20 w-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <Calendar className="w-10 h-10 text-white/50" />
+                          </div>
+                          <p className="text-white/50 text-sm">Event Photo</p>
                         </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </ScrollAnimation>
             </Container>
           </section>
         )}
 
         {/* Events Grid */}
-        <section className="py-section-lg bg-muted/50">
+        <section className="py-section bg-muted/30">
           <Container>
             <ScrollAnimation>
               <SectionHeading
                 title="Recent Events"
-                subtitle="Highlights from our school activities"
+                subtitle="Highlights from our school activities and celebrations"
               />
             </ScrollAnimation>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherEvents.map((event, index) => (
-                <ScrollAnimation key={event.title} delay={index * 100}>
-                  <Card className="h-full">
+
+            <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {otherEvents.map((event) => (
+                <StaggerItem key={event.title}>
+                  <Card className="h-full group hover-lift overflow-hidden">
                     <CardContent className="p-0">
-                      <div className="aspect-video bg-muted flex items-center justify-center">
-                        <Calendar className="w-12 h-12 text-muted-foreground/50" />
+                      <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
+                        <Calendar className="w-12 h-12 text-primary/30 group-hover:text-primary/50 transition-colors" />
                       </div>
                       <div className="p-6">
                         <Badge variant="outline" className="mb-3">
                           {event.date}
                         </Badge>
-                        <h3 className="font-display text-lg font-semibold mb-2">
+                        <h3 className="font-display text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
                           {event.title}
                         </h3>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           {event.description}
                         </p>
                       </div>
                     </CardContent>
                   </Card>
-                </ScrollAnimation>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </Container>
         </section>
 
         {/* School Calendar */}
-        <section className="py-section-lg">
+        <section className="py-section bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+          <Container>
+            <ScrollAnimation>
+              <div className="text-center mb-16">
+                <h2 className="text-display-lg font-display mb-4">School Calendar</h2>
+                <p className="text-body-lg text-white/70 max-w-2xl mx-auto">
+                  Key activities throughout the school year
+                </p>
+              </div>
+            </ScrollAnimation>
+
+            <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+              {schoolCalendar.map((item) => (
+                <StaggerItem key={item.month}>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-card-lg p-5 border border-white/10 hover:bg-white/10 transition-colors h-full">
+                    <h4 className="font-display font-semibold text-primary mb-3">
+                      {item.month}
+                    </h4>
+                    <ul className="space-y-2">
+                      {item.activities.map((activity) => (
+                        <li key={activity} className="text-sm text-white/70 flex items-start gap-2">
+                          <span className="text-primary mt-1.5 text-xs">●</span>
+                          {activity}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+
+            <ScrollAnimation delay={0.5}>
+              <p className="text-sm text-white/50 text-center mt-8">
+                * Schedule may vary. Follow our Facebook page for updates.
+              </p>
+            </ScrollAnimation>
+          </Container>
+        </section>
+
+        {/* Highlights Section */}
+        <section className="py-section">
           <Container>
             <ScrollAnimation>
               <SectionHeading
-                title="School Calendar"
-                subtitle="Key activities throughout the school year"
+                title="FMA Highlights"
+                subtitle="Memorable moments from our school community"
               />
             </ScrollAnimation>
-            <div className="max-w-4xl mx-auto">
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {schoolCalendar.map((item, index) => (
-                  <ScrollAnimation key={item.month} delay={index * 50}>
-                    <Card hover={false} className="h-full">
-                      <CardContent className="p-4">
-                        <h4 className="font-display font-semibold text-primary mb-2">
-                          {item.month}
-                        </h4>
-                        <ul className="space-y-1">
-                          {item.activities.map((activity) => (
-                            <li key={activity} className="text-sm text-muted-foreground flex items-start gap-2">
-                              <span className="text-primary mt-1">•</span>
-                              {activity}
-                            </li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  </ScrollAnimation>
-                ))}
-              </div>
-              <ScrollAnimation delay={500}>
-                <p className="text-sm text-muted-foreground text-center mt-6">
-                  * Schedule may vary. Follow our Facebook page for updates.
-                </p>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <ScrollAnimation direction="left">
+                <Card className="h-full hover-lift">
+                  <CardContent className="p-8">
+                    <div className="h-14 w-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                      <Star className="h-7 w-7 text-primary" />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold mb-3">
+                      Academic Recognition
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      Every quarter, we celebrate our academic achievers through
+                      recognition programs that honor their hard work and dedication.
+                    </p>
+                    <Badge variant="outline">Quarterly Events</Badge>
+                  </CardContent>
+                </Card>
+              </ScrollAnimation>
+
+              <ScrollAnimation direction="right">
+                <Card className="h-full hover-lift">
+                  <CardContent className="p-8">
+                    <div className="h-14 w-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                      <Calendar className="h-7 w-7 text-secondary" />
+                    </div>
+                    <h3 className="font-display text-xl font-semibold mb-3">
+                      Cultural Celebrations
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      From Buwan ng Wika to Christmas programs, our students experience
+                      rich cultural celebrations throughout the year.
+                    </p>
+                    <Badge variant="outline">Annual Traditions</Badge>
+                  </CardContent>
+                </Card>
               </ScrollAnimation>
             </div>
           </Container>
         </section>
 
-        {/* CTA */}
-        <section className="py-section-lg bg-secondary text-secondary-foreground">
-          <Container>
+        {/* Final CTA */}
+        <section className="py-section-lg relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-sky-600" />
+          <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+
+          <Container className="relative z-10">
             <ScrollAnimation>
-              <div className="text-center max-w-3xl mx-auto">
-                <h2 className="font-display text-display-sm md:text-display-md mb-6">
+              <div className="text-center max-w-3xl mx-auto text-white">
+                <h2 className="text-display-lg font-display mb-6">
                   Stay Updated
                 </h2>
-                <p className="text-lg opacity-90 mb-8">
-                  Follow us on Facebook for real-time updates on school events and
-                  announcements.
+                <p className="text-body-xl opacity-90 mb-10">
+                  Follow us on Facebook for real-time updates on school events,
+                  announcements, and community highlights.
                 </p>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-white text-secondary hover:bg-white/90"
-                  asChild
-                >
-                  <a href="https://www.facebook.com/FUTUREMINDSACADEMY" target="_blank" rel="noopener noreferrer">
-                    Follow on Facebook <ArrowRight className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
+                <div className="flex gap-4 justify-center flex-wrap">
+                  <Button
+                    size="lg"
+                    className="bg-white text-primary hover:bg-white/90 shadow-xl"
+                    asChild
+                  >
+                    <a href={CONTACT.social.facebook} target="_blank" rel="noopener noreferrer">
+                      <Facebook className="mr-2 h-4 w-4" />
+                      Follow on Facebook
+                    </a>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="ghost"
+                    className="text-white border-2 border-white/30 hover:bg-white/10"
+                    asChild
+                  >
+                    <Link href="/contact">Contact Us</Link>
+                  </Button>
+                </div>
               </div>
             </ScrollAnimation>
           </Container>

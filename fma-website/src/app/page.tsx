@@ -1,266 +1,307 @@
 import Link from "next/link";
-import { ArrowRight, GraduationCap, BookOpen, Users, Heart } from "lucide-react";
+import { ArrowRight, GraduationCap, BookOpen, Users, Heart, Star, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header, Footer, Container } from "@/components/layout";
 import {
   SectionHeading,
-  StatCard,
   ScrollAnimation,
-  FloatingShapes,
-  AnimatedText,
+  StaggerContainer,
+  StaggerItem,
+  HeroCarousel,
+  NumberedCard,
+  NumberedCardGrid,
+  NumberedCardItem,
+  TestimonialCarousel,
   Card,
   CardContent,
   Badge,
-  FlipCard,
 } from "@/components/shared";
+import type { HeroSlide, Testimonial } from "@/components/shared";
 import { SCHOOL, STATS, PROGRAMS, EVENTS } from "@/lib/constants";
 
-export default function Home() {
-  const rotatingWords = ["Excellence", "Growth", "Community", "Future"];
+// Hero slides with new marketing copy
+const heroSlides: HeroSlide[] = [
+  {
+    headline: "Building Strong Foundations for 20 Years",
+    subheadline: "Ensuring a strong foundation for every child's educational journey from preschool to primary school",
+    cta: { text: "Enroll Now", href: "/admission" },
+  },
+  {
+    headline: "Where Every Child's Potential is Nurtured",
+    subheadline: "Small class sizes, personalized attention, and values-based education that shapes future leaders",
+    cta: { text: "Meet Our Faculty", href: "/faculty" },
+  },
+  {
+    headline: "DepEd Recognized Excellence",
+    subheadline: "Following the K-12 curriculum with a commitment to academic excellence and character development",
+    cta: { text: "Explore Programs", href: "/academics" },
+  },
+  {
+    headline: "Join the FMA Family",
+    subheadline: "Be part of a community that celebrates achievements and creates lasting memories",
+    cta: { text: "Contact Us", href: "/contact" },
+  },
+];
 
+// Who is FMA for - numbered cards
+const targetAudience = [
+  {
+    number: 1,
+    title: "Working Parents",
+    description: "Seeking a safe, nurturing environment with a convenient location near MRT stations and regular communication about your child's progress.",
+    icon: <Users className="h-6 w-6" />,
+  },
+  {
+    number: 2,
+    title: "First-Time Parents",
+    description: "Looking for a gentle transition from home to school with caring teachers who understand early childhood development.",
+    icon: <Heart className="h-6 w-6" />,
+  },
+  {
+    number: 3,
+    title: "Values-Driven Families",
+    description: "Wanting education that integrates character formation and moral values alongside academic excellence.",
+    icon: <Star className="h-6 w-6" />,
+  },
+  {
+    number: 4,
+    title: "Curious Young Learners",
+    description: "Ready for fun, engaging learning experiences with supportive teachers and exciting school activities.",
+    icon: <BookOpen className="h-6 w-6" />,
+  },
+  {
+    number: 5,
+    title: "Mandaluyong Families",
+    description: "Seeking a neighborhood school with deep community roots and 20 years of trusted educational service.",
+    icon: <GraduationCap className="h-6 w-6" />,
+  },
+];
+
+// Placeholder testimonials
+const testimonials: Testimonial[] = [
+  {
+    id: "1",
+    quote: "Future Minds Academy has been amazing for our daughter. The teachers are so caring and we've seen incredible growth in her confidence and love for learning.",
+    author: "Maria Santos",
+    role: "Parent of Kindergarten Student",
+  },
+  {
+    id: "2",
+    quote: "The small class sizes mean our son gets the attention he needs. The school really feels like a family and we couldn't be happier with our choice.",
+    author: "Juan Dela Cruz",
+    role: "Parent of Grade 3 Student",
+  },
+  {
+    id: "3",
+    quote: "I love going to school! My teachers are fun and I have so many friends. We went to a concert at Malacañang and it was the best day ever!",
+    author: "Sofia",
+    role: "Grade 5 Student",
+  },
+];
+
+export default function Home() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-background pt-[65px]">
-        {/* Hero Section */}
-        <section className="relative py-section-lg overflow-hidden">
-          <FloatingShapes variant="hero" />
-          <Container className="relative z-10">
-            <ScrollAnimation>
-              <div className="text-center max-w-4xl mx-auto">
-                <Badge variant="secondary" className="mb-6">
-                  Celebrating {SCHOOL.yearsInOperation} Years of Excellence
-                </Badge>
-                <h1 className="font-display text-display-md md:text-display-lg text-foreground mb-6">
-                  {SCHOOL.headline}
-                </h1>
-                <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-4">
-                  {SCHOOL.tagline}
-                </p>
-                <p className="text-lg text-primary font-medium mb-8">
-                  Building{" "}
-                  <AnimatedText words={rotatingWords} className="text-secondary" />
-                </p>
-                <div className="flex gap-4 justify-center flex-wrap">
-                  <Button size="lg" asChild>
-                    <Link href="/admission">
-                      Enroll Now <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button size="lg" variant="outline" asChild>
-                    <Link href="/about">Learn More</Link>
-                  </Button>
-                </div>
-              </div>
-            </ScrollAnimation>
-          </Container>
-        </section>
+      <main className="min-h-screen bg-background">
+        {/* Hero Carousel */}
+        <HeroCarousel slides={heroSlides} autoPlayInterval={6000} />
 
         {/* Stats Section */}
-        <section className="py-section bg-primary/5">
+        <section className="py-section-sm bg-background relative">
           <Container>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {STATS.map((stat, index) => (
-                <ScrollAnimation key={stat.label} delay={index * 100}>
-                  <StatCard value={stat.value} label={stat.label} />
-                </ScrollAnimation>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        {/* About Preview */}
-        <section className="py-section-lg">
-          <Container>
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <ScrollAnimation direction="left">
-                <div className="aspect-[4/3] bg-muted rounded-card-lg overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <GraduationCap className="w-24 h-24 text-primary/50" />
+            <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {STATS.map((stat) => (
+                <StaggerItem key={stat.label}>
+                  <div className="text-center p-6 rounded-card-lg bg-card shadow-card hover-lift">
+                    <div className="text-display-md font-display text-gradient mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-muted-foreground font-medium">
+                      {stat.label}
+                    </div>
                   </div>
-                </div>
-              </ScrollAnimation>
-              <ScrollAnimation direction="right">
-                <Badge className="mb-4">About Us</Badge>
-                <h2 className="font-display text-display-sm text-foreground mb-4">
-                  Nurturing Young Minds Since {SCHOOL.founded}
-                </h2>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Future Minds Academy has been a cornerstone of quality education in
-                  Mandaluyong City for {SCHOOL.yearsInOperation} years. As a DepEd-recognized
-                  institution and proud member of the Christian Educators&apos; Network
-                  (CEdNet), we are committed to providing excellent education with values
-                  integration.
-                </p>
-                <Button asChild variant="outline">
-                  <Link href="/about">
-                    Discover Our Story <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </ScrollAnimation>
-            </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </Container>
         </section>
 
-        {/* Programs Section */}
-        <section className="py-section-lg bg-muted/50">
+        {/* Who is FMA For - Numbered Cards */}
+        <section className="py-section bg-muted/30">
           <Container>
             <ScrollAnimation>
               <SectionHeading
-                title="Our Programs"
-                subtitle="Comprehensive education from preschool to elementary, following the DepEd K-12 curriculum"
+                title="Who is Future Minds Academy For?"
+                subtitle="We serve families in Mandaluyong who value quality education, character development, and a nurturing community"
               />
             </ScrollAnimation>
+
+            <NumberedCardGrid className="lg:grid-cols-3">
+              {targetAudience.map((item, index) => (
+                <NumberedCardItem key={item.number}>
+                  <NumberedCard
+                    number={item.number}
+                    title={item.title}
+                    description={item.description}
+                    icon={item.icon}
+                  />
+                </NumberedCardItem>
+              ))}
+            </NumberedCardGrid>
+          </Container>
+        </section>
+
+        {/* Programs Preview */}
+        <section className="py-section bg-background">
+          <Container>
+            <ScrollAnimation>
+              <SectionHeading
+                title="Academic Programs"
+                subtitle="Comprehensive education following the DepEd K-12 curriculum with values integration"
+              />
+            </ScrollAnimation>
+
             <div className="grid md:grid-cols-2 gap-8">
               {Object.entries(PROGRAMS).map(([key, program], index) => (
-                <ScrollAnimation key={key} delay={index * 150}>
-                  <FlipCard
-                    className="h-[300px]"
-                    front={
-                      <div className="h-full flex flex-col items-center justify-center text-center">
+                <ScrollAnimation key={key} delay={index * 0.15} direction={index === 0 ? "left" : "right"}>
+                  <div className="group relative bg-card rounded-card-xl p-8 shadow-card hover-lift overflow-hidden">
+                    {/* Background number */}
+                    <div className="absolute -top-8 -right-4 font-display text-[10rem] font-bold leading-none text-primary/5 select-none">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+
+                    <div className="relative z-10">
+                      <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-primary/10 text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                         {key === "preschool" ? (
-                          <BookOpen className="w-16 h-16 text-primary mb-4" />
+                          <BookOpen className="h-7 w-7" />
                         ) : (
-                          <GraduationCap className="w-16 h-16 text-primary mb-4" />
+                          <GraduationCap className="h-7 w-7" />
                         )}
-                        <h3 className="font-display text-2xl font-semibold mb-2">
-                          {program.name}
-                        </h3>
-                        <p className="text-muted-foreground text-sm">
-                          Hover to learn more
-                        </p>
                       </div>
-                    }
-                    back={
-                      <div className="h-full flex flex-col justify-center">
-                        <h3 className="font-display text-xl font-semibold mb-4">
-                          {program.name}
-                        </h3>
-                        <p className="text-sm mb-4 opacity-90">{program.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {program.levels.map((level) => (
-                            <Badge key={level} variant="outline" className="bg-white/20 border-white/30 text-white">
-                              {level}
-                            </Badge>
-                          ))}
-                        </div>
+
+                      <h3 className="text-display-sm font-display mb-3">{program.name}</h3>
+                      <p className="text-muted-foreground mb-6">{program.description}</p>
+
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {program.levels.map((level) => (
+                          <Badge key={level} variant="outline">
+                            {level}
+                          </Badge>
+                        ))}
                       </div>
-                    }
-                  />
+
+                      <Button asChild variant="ghost" className="group/btn -ml-4">
+                        <Link href="/academics">
+                          Learn More
+                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
                 </ScrollAnimation>
               ))}
             </div>
           </Container>
         </section>
 
-        {/* Persona Cards */}
-        <section className="py-section-lg">
+        {/* Why Choose FMA */}
+        <section className="py-section bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+          <Container>
+            <ScrollAnimation>
+              <div className="text-center mb-16">
+                <h2 className="text-display-lg font-display mb-4">Why Choose FMA?</h2>
+                <p className="text-body-lg text-white/70 max-w-2xl mx-auto">
+                  For 20 years, we've been committed to providing quality education that makes a difference
+                </p>
+              </div>
+            </ScrollAnimation>
+
+            <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { title: "DepEd Recognized", desc: "Government-approved curriculum ensuring quality education standards" },
+                { title: "Small Class Sizes", desc: "Personalized attention for every student's unique needs" },
+                { title: "CEdNet Member", desc: "Part of the Christian Educators' Network for values-based education" },
+                { title: "Experienced Teachers", desc: "Dedicated faculty committed to nurturing young minds" },
+                { title: "Convenient Location", desc: "Near MRT stations, accessible to Mandaluyong families" },
+                { title: "Active Community", desc: "Regular events, field trips, and parent engagement" },
+              ].map((item, i) => (
+                <StaggerItem key={item.title}>
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center">
+                        <CheckCircle2 className="h-5 w-5 text-primary" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="font-display font-semibold text-lg mb-1">{item.title}</h3>
+                      <p className="text-white/60 text-sm">{item.desc}</p>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </Container>
+        </section>
+
+        {/* Testimonials */}
+        <section className="py-section bg-muted/30">
           <Container>
             <ScrollAnimation>
               <SectionHeading
-                title="Who We Serve"
-                subtitle="Dedicated to supporting both parents and students in their educational journey"
+                title="What Our Community Says"
+                subtitle="Hear from the families who have made FMA their educational home"
               />
             </ScrollAnimation>
-            <div className="grid md:grid-cols-2 gap-8">
-              <ScrollAnimation delay={0}>
-                <Card className="h-full bg-primary/5 border-2 border-primary/20">
-                  <CardContent className="p-8">
-                    <Users className="w-12 h-12 text-primary mb-4" />
-                    <h3 className="font-display text-2xl font-semibold mb-4">For Parents</h3>
-                    <ul className="space-y-3 text-muted-foreground">
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">✓</span>
-                        Safe and nurturing environment
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">✓</span>
-                        Regular progress updates
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">✓</span>
-                        Values-based education
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary">✓</span>
-                        Affordable quality education
-                      </li>
-                    </ul>
-                    <Button asChild className="mt-6">
-                      <Link href="/admission">Enroll Your Child</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-              <ScrollAnimation delay={150}>
-                <Card className="h-full bg-secondary/5 border-2 border-secondary/20">
-                  <CardContent className="p-8">
-                    <Heart className="w-12 h-12 text-secondary mb-4" />
-                    <h3 className="font-display text-2xl font-semibold mb-4">For Students</h3>
-                    <ul className="space-y-3 text-muted-foreground">
-                      <li className="flex items-start gap-2">
-                        <span className="text-secondary">✓</span>
-                        Fun and engaging learning
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-secondary">✓</span>
-                        Supportive teachers
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-secondary">✓</span>
-                        Exciting school activities
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-secondary">✓</span>
-                        New friends and experiences
-                      </li>
-                    </ul>
-                    <Button asChild variant="secondary" className="mt-6">
-                      <Link href="/academics">Explore Programs</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
+
+            <div className="max-w-3xl mx-auto">
+              <TestimonialCarousel testimonials={testimonials} autoPlayInterval={7000} />
             </div>
           </Container>
         </section>
 
-        {/* Events Preview + Goldenberg Highlight */}
-        <section className="py-section-lg bg-muted/50">
+        {/* Events Highlight */}
+        <section className="py-section bg-background">
           <Container>
             <ScrollAnimation>
               <SectionHeading
                 title="Latest News & Events"
-                subtitle="Stay updated with the latest happenings at FMA"
+                subtitle="Stay connected with what's happening at FMA"
               />
             </ScrollAnimation>
 
-            {/* Goldenberg Concert Highlight */}
+            {/* Featured Event - Goldenberg Concert */}
             <ScrollAnimation>
-              <Card className="mb-8 overflow-hidden bg-gradient-to-r from-primary to-primary-dark text-white">
-                <CardContent className="p-8 md:p-12">
+              <div className="relative mb-12 rounded-card-xl overflow-hidden bg-gradient-to-r from-primary to-primary-dark">
+                <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+                <div className="relative z-10 p-8 md:p-12 text-white">
                   <div className="flex flex-wrap gap-2 mb-4">
                     <Badge className="bg-white/20 text-white border-0">Featured</Badge>
                     <Badge className="bg-secondary text-white border-0">Manila Bulletin</Badge>
                     <Badge className="bg-white/20 text-white border-0">GMA News</Badge>
                   </div>
-                  <h3 className="font-display text-2xl md:text-3xl font-semibold mb-4">
+                  <h3 className="text-display-sm font-display mb-4">
                     Goldenberg Concert Series XX
                   </h3>
-                  <p className="text-white/90 mb-4 max-w-2xl">
+                  <p className="text-white/90 mb-6 max-w-2xl text-body-lg">
                     FMA students attended the prestigious PCSO Vocal Ensemble performance at
-                    Malacañang Palace, featured in Manila Bulletin and GMA News!
+                    the historic Goldenberg Mansion in Malacañang, featured in national media!
                   </p>
-                  <p className="text-white/70 text-sm">November 7, 2025</p>
-                </CardContent>
-              </Card>
+                  <div className="flex items-center gap-4">
+                    <span className="text-white/70 text-sm">November 7, 2025</span>
+                    <Button asChild variant="secondary" className="bg-white text-primary hover:bg-white/90">
+                      <Link href="/events">View All Events</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </ScrollAnimation>
 
-            {/* Other Events */}
-            <div className="grid md:grid-cols-3 gap-6">
-              {EVENTS.filter((e) => !e.featured).slice(0, 3).map((event, index) => (
-                <ScrollAnimation key={event.title} delay={index * 100}>
-                  <Card>
+            {/* Other Events Grid */}
+            <StaggerContainer className="grid md:grid-cols-3 gap-6">
+              {EVENTS.filter((e) => !e.featured).slice(0, 3).map((event) => (
+                <StaggerItem key={event.title}>
+                  <Card className="h-full hover-lift">
                     <CardContent className="p-6">
                       <Badge variant="outline" className="mb-3">
                         {event.date}
@@ -273,45 +314,44 @@ export default function Home() {
                       </p>
                     </CardContent>
                   </Card>
-                </ScrollAnimation>
+                </StaggerItem>
               ))}
-            </div>
-
-            <div className="text-center mt-8">
-              <Button asChild variant="outline">
-                <Link href="/events">
-                  View All Events <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+            </StaggerContainer>
           </Container>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-section-lg bg-secondary text-secondary-foreground">
-          <Container>
+        {/* Final CTA */}
+        <section className="py-section-lg relative overflow-hidden">
+          {/* Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary to-amber-600" />
+          <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+
+          {/* Content */}
+          <Container className="relative z-10">
             <ScrollAnimation>
-              <div className="text-center max-w-3xl mx-auto">
-                <h2 className="font-display text-display-sm md:text-display-md mb-6">
+              <div className="text-center max-w-3xl mx-auto text-white">
+                <h2 className="text-display-lg font-display mb-6">
                   Ready to Join the FMA Family?
                 </h2>
-                <p className="text-lg opacity-90 mb-8">
+                <p className="text-body-xl opacity-90 mb-10">
                   Give your child the gift of quality education. Enrollment is now open for
-                  preschool and elementary programs.
+                  preschool and elementary programs for School Year 2025-2026.
                 </p>
                 <div className="flex gap-4 justify-center flex-wrap">
                   <Button
                     size="lg"
-                    variant="outline"
-                    className="bg-white text-secondary hover:bg-white/90"
+                    className="bg-white text-secondary hover:bg-white/90 shadow-xl"
                     asChild
                   >
-                    <Link href="/admission">Start Application</Link>
+                    <Link href="/admission">
+                      Start Application
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
                   </Button>
                   <Button
                     size="lg"
                     variant="ghost"
-                    className="text-white hover:bg-white/10"
+                    className="text-white border-2 border-white/30 hover:bg-white/10"
                     asChild
                   >
                     <Link href="/contact">Contact Us</Link>

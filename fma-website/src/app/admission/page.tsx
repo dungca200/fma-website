@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, FileText, ClipboardList, Award, Image, HeartPulse, MapPin, Phone, Clock } from "lucide-react";
+import { ArrowRight, FileText, ClipboardList, Award, Image, HeartPulse, MapPin, Phone, Clock, CheckCircle2, Calendar, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header, Footer, Container } from "@/components/layout";
 import {
   SectionHeading,
   ScrollAnimation,
-  FloatingShapes,
+  StaggerContainer,
+  StaggerItem,
+  ProcessSteps,
   Card,
   CardContent,
   Badge,
 } from "@/components/shared";
+import type { ProcessStep } from "@/components/shared";
 import { ADMISSION, CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -27,176 +30,226 @@ const requirementIcons: Record<string, React.ElementType> = {
   "heart-pulse": HeartPulse,
 };
 
-export default function AdmissionPage() {
-  const steps = [
-    {
-      number: 1,
-      title: "Visit the School",
-      description: "Come to our campus during office hours for an initial inquiry and school tour.",
-    },
-    {
-      number: 2,
-      title: "Submit Requirements",
-      description: "Prepare and submit all required documents listed below.",
-    },
-    {
-      number: 3,
-      title: "Assessment",
-      description: "Students undergo age-appropriate assessment to determine placement.",
-    },
-    {
-      number: 4,
-      title: "Enrollment",
-      description: "Complete enrollment forms and settle initial fees.",
-    },
-  ];
+const enrollmentSteps: ProcessStep[] = [
+  {
+    number: 1,
+    title: "Discovery Visit",
+    description: "Schedule a visit to our campus. Meet our teachers, tour our facilities, and learn about our programs in person.",
+    icon: <Users className="h-6 w-6" />,
+    cta: { text: "Schedule a Visit", href: "/contact" },
+  },
+  {
+    number: 2,
+    title: "Submit Requirements",
+    description: "Prepare and submit all required documents. Our admissions team will guide you through the paperwork.",
+    icon: <FileText className="h-6 w-6" />,
+  },
+  {
+    number: 3,
+    title: "Assessment & Enrollment",
+    description: "Students undergo age-appropriate assessment. Complete enrollment forms and welcome your child to the FMA family!",
+    icon: <CheckCircle2 className="h-6 w-6" />,
+  },
+];
 
+export default function AdmissionPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-background pt-[65px]">
-        {/* Hero */}
-        <section className="relative py-section-lg overflow-hidden bg-secondary/10">
-          <FloatingShapes variant="section" />
-          <Container className="relative z-10">
-            <ScrollAnimation>
-              <div className="max-w-3xl">
-                <Badge variant="secondary" className="mb-4">Now Enrolling</Badge>
-                <h1 className="font-display text-display-md md:text-display-lg text-foreground mb-6">
+      <main className="min-h-screen bg-background">
+        {/* Hero Section */}
+        <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-amber-500 via-amber-500 to-orange-500">
+          {/* Background pattern */}
+          <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
+          </div>
+
+          <Container className="relative z-10 py-20">
+            <div className="max-w-3xl">
+              <ScrollAnimation>
+                <Badge className="mb-6 bg-white/20 text-white border-0">
+                  <Calendar className="h-4 w-4 mr-2" />
+                  Now Enrolling for SY 2025-2026
+                </Badge>
+                <h1 className="text-display-xl font-display text-white mb-6">
                   Join the FMA Family
                 </h1>
-                <p className="text-xl text-muted-foreground mb-8">
+                <p className="text-body-xl text-white/90 mb-8 max-w-2xl">
                   {ADMISSION.cta}
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 mb-8">
                   {ADMISSION.levels.map((level) => (
-                    <Badge key={level} variant="outline" className="text-sm py-1.5">
+                    <Badge key={level} className="bg-white/20 text-white border-0 py-2 px-4">
                       {level}
                     </Badge>
                   ))}
                 </div>
-              </div>
-            </ScrollAnimation>
-          </Container>
-        </section>
-
-        {/* Enrollment Info */}
-        <section className="py-section-lg">
-          <Container>
-            <ScrollAnimation>
-              <SectionHeading
-                title="How to Apply"
-                subtitle="Follow these simple steps to enroll your child at FMA"
-              />
-            </ScrollAnimation>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {steps.map((step, index) => (
-                <ScrollAnimation key={step.number} delay={index * 100}>
-                  <Card className="h-full relative overflow-hidden">
-                    <CardContent className="p-6">
-                      <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 rounded-full" />
-                      <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-display text-xl font-bold mb-4 relative z-10">
-                        {step.number}
-                      </div>
-                      <h3 className="font-display text-lg font-semibold mb-2">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {step.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </ScrollAnimation>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        {/* Requirements Checklist */}
-        <section className="py-section-lg bg-muted/50">
-          <Container>
-            <ScrollAnimation>
-              <SectionHeading
-                title="Enrollment Requirements"
-                subtitle="Prepare the following documents for enrollment"
-              />
-            </ScrollAnimation>
-            <div className="max-w-3xl mx-auto">
-              <div className="grid sm:grid-cols-2 gap-4">
-                {ADMISSION.requirements.map((req, index) => {
-                  const Icon = requirementIcons[req.icon] || FileText;
-                  return (
-                    <ScrollAnimation key={req.item} delay={index * 75}>
-                      <Card hover={false} className="border-l-4 border-l-primary">
-                        <CardContent className="p-4 flex items-center gap-4">
-                          <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
-                            <Icon className="w-6 h-6 text-primary" />
-                          </div>
-                          <span className="font-medium">{req.item}</span>
-                        </CardContent>
-                      </Card>
-                    </ScrollAnimation>
-                  );
-                })}
-              </div>
-              <ScrollAnimation delay={400}>
-                <p className="text-sm text-muted-foreground text-center mt-8">
-                  * Additional requirements may be requested depending on grade level and
-                  circumstances.
-                </p>
+                <Button
+                  size="lg"
+                  className="bg-white text-secondary hover:bg-white/90 shadow-xl"
+                  asChild
+                >
+                  <Link href="/contact">
+                    Start Your Application
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
               </ScrollAnimation>
             </div>
           </Container>
         </section>
 
-        {/* Visit Us CTA + Map Preview */}
-        <section className="py-section-lg">
+        {/* How to Apply - Process Steps */}
+        <section className="py-section">
           <Container>
-            <div className="grid lg:grid-cols-2 gap-12">
+            <ProcessSteps
+              steps={enrollmentSteps}
+              title="How to Apply"
+              subtitle="Our simple 3-step enrollment process makes joining the FMA family easy"
+            />
+          </Container>
+        </section>
+
+        {/* Requirements Checklist */}
+        <section className="py-section bg-muted/30">
+          <Container>
+            <ScrollAnimation>
+              <SectionHeading
+                title="Enrollment Requirements"
+                subtitle="Prepare the following documents for a smooth enrollment process"
+              />
+            </ScrollAnimation>
+
+            <div className="max-w-4xl mx-auto">
+              <StaggerContainer className="grid sm:grid-cols-2 gap-4">
+                {ADMISSION.requirements.map((req) => {
+                  const Icon = requirementIcons[req.icon] || FileText;
+                  return (
+                    <StaggerItem key={req.item}>
+                      <Card className="group hover-lift border-l-4 border-l-primary">
+                        <CardContent className="p-5 flex items-center gap-4">
+                          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <Icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                          </div>
+                          <span className="font-medium">{req.item}</span>
+                        </CardContent>
+                      </Card>
+                    </StaggerItem>
+                  );
+                })}
+              </StaggerContainer>
+
+              <ScrollAnimation delay={0.4}>
+                <div className="mt-8 p-6 bg-primary/5 rounded-card-lg border border-primary/10">
+                  <p className="text-sm text-muted-foreground text-center">
+                    <strong className="text-foreground">Note:</strong> Additional requirements may be requested
+                    depending on grade level and circumstances. Contact us for tuition fee information.
+                  </p>
+                </div>
+              </ScrollAnimation>
+            </div>
+          </Container>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-section">
+          <Container>
+            <ScrollAnimation>
+              <SectionHeading
+                title="Frequently Asked Questions"
+                subtitle="Common questions about enrollment at FMA"
+              />
+            </ScrollAnimation>
+
+            <div className="max-w-3xl mx-auto">
+              <StaggerContainer className="space-y-4">
+                {[
+                  {
+                    q: "What grade levels do you offer?",
+                    a: "We offer Preschool (Nursery and Kindergarten) and Complete Elementary (Grades 1-6).",
+                  },
+                  {
+                    q: "What curriculum do you follow?",
+                    a: "We follow the DepEd K-12 curriculum and are transitioning to the MATATAG curriculum per DepEd timeline.",
+                  },
+                  {
+                    q: "Do you offer summer classes?",
+                    a: "Yes! We offer summer classes for students who want to get ahead or catch up.",
+                  },
+                  {
+                    q: "How can I get information about tuition fees?",
+                    a: "Please visit our school or contact us directly for current tuition fee schedules.",
+                  },
+                ].map((faq, i) => (
+                  <StaggerItem key={i}>
+                    <Card className="hover-lift">
+                      <CardContent className="p-6">
+                        <h4 className="font-display font-semibold text-lg mb-2">{faq.q}</h4>
+                        <p className="text-muted-foreground">{faq.a}</p>
+                      </CardContent>
+                    </Card>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            </div>
+          </Container>
+        </section>
+
+        {/* Visit Us Section */}
+        <section className="py-section bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+          <Container>
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
               <ScrollAnimation direction="left">
-                <Badge className="mb-4">Visit Us</Badge>
-                <h2 className="font-display text-display-sm text-foreground mb-6">
+                <Badge className="mb-6 bg-white/10 text-white border-0">Visit Us</Badge>
+                <h2 className="text-display-md font-display mb-8">
                   Come See Our Campus
                 </h2>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
-                      <MapPin className="w-6 h-6 text-primary" />
+
+                <div className="space-y-8">
+                  <div className="flex items-start gap-5">
+                    <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center shrink-0">
+                      <MapPin className="w-7 h-7 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-1">Address</h4>
-                      <p className="text-muted-foreground text-sm">
+                      <h4 className="font-semibold text-lg mb-2">Address</h4>
+                      <p className="text-white/70">
                         {CONTACT.address.line1}
                         <br />
                         {CONTACT.address.line2}
                         <br />
                         {CONTACT.address.city}
                       </p>
-                      <p className="text-sm text-primary mt-1">{CONTACT.landmark}</p>
+                      <p className="text-primary mt-2 text-sm">{CONTACT.landmark}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
-                      <Phone className="w-6 h-6 text-primary" />
+                  <div className="flex items-start gap-5">
+                    <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center shrink-0">
+                      <Phone className="w-7 h-7 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-1">Contact Numbers</h4>
-                      <p className="text-muted-foreground text-sm">
-                        {CONTACT.phone.landline1}
+                      <h4 className="font-semibold text-lg mb-2">Contact Numbers</h4>
+                      <p className="text-white/70">
+                        <a href={`tel:${CONTACT.phone.landline1}`} className="hover:text-white transition-colors">
+                          {CONTACT.phone.landline1}
+                        </a>
                         <br />
-                        {CONTACT.phone.mobile}
+                        <a href={`tel:${CONTACT.phone.mobile}`} className="hover:text-white transition-colors">
+                          {CONTACT.phone.mobile}
+                        </a>
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
-                      <Clock className="w-6 h-6 text-primary" />
+                  <div className="flex items-start gap-5">
+                    <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center shrink-0">
+                      <Clock className="w-7 h-7 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-1">Office Hours</h4>
-                      <p className="text-muted-foreground text-sm">
+                      <h4 className="font-semibold text-lg mb-2">Office Hours</h4>
+                      <p className="text-white/70">
                         Monday - Friday
                         <br />
                         7:30 AM - 4:00 PM
@@ -204,16 +257,21 @@ export default function AdmissionPage() {
                     </div>
                   </div>
 
-                  <Button asChild className="mt-4">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-white text-slate-900 hover:bg-white/90 mt-4"
+                  >
                     <Link href="/contact">
-                      Get Directions <ArrowRight className="ml-2 h-4 w-4" />
+                      Get Directions
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
               </ScrollAnimation>
 
               <ScrollAnimation direction="right">
-                <div className="aspect-[4/3] bg-muted rounded-card-lg overflow-hidden">
+                <div className="aspect-[4/3] bg-white/5 rounded-card-xl overflow-hidden border border-white/10">
                   <iframe
                     src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.2!2d${CONTACT.coordinates.lng}!3d${CONTACT.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTTCsDM0JzM0LjAiTiAxMjHCsDAyJzE3LjAiRQ!5e0!3m2!1sen!2sph!4v1`}
                     width="100%"
@@ -230,31 +288,36 @@ export default function AdmissionPage() {
           </Container>
         </section>
 
-        {/* CTA */}
-        <section className="py-section-lg bg-primary text-primary-foreground">
-          <Container>
+        {/* Final CTA */}
+        <section className="py-section-lg relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary to-amber-600" />
+          <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
+
+          <Container className="relative z-10">
             <ScrollAnimation>
-              <div className="text-center max-w-3xl mx-auto">
-                <h2 className="font-display text-display-sm md:text-display-md mb-6">
+              <div className="text-center max-w-3xl mx-auto text-white">
+                <h2 className="text-display-lg font-display mb-6">
                   Start Your Application Today
                 </h2>
-                <p className="text-lg opacity-90 mb-8">
-                  Limited slots available. Visit us now to secure your child&apos;s spot
-                  for the upcoming school year.
+                <p className="text-body-xl opacity-90 mb-10">
+                  Limited slots available. Visit us now to secure your child's spot
+                  for School Year 2025-2026.
                 </p>
                 <div className="flex gap-4 justify-center flex-wrap">
                   <Button
                     size="lg"
-                    variant="outline"
-                    className="bg-white text-primary hover:bg-white/90"
+                    className="bg-white text-secondary hover:bg-white/90 shadow-xl"
                     asChild
                   >
-                    <Link href="/contact">Contact Us</Link>
+                    <Link href="/contact">
+                      Contact Us
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
                   </Button>
                   <Button
                     size="lg"
                     variant="ghost"
-                    className="text-white hover:bg-white/10"
+                    className="text-white border-2 border-white/30 hover:bg-white/10"
                     asChild
                   >
                     <a href={CONTACT.social.facebook} target="_blank" rel="noopener noreferrer">
