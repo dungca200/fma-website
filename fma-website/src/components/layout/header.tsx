@@ -17,6 +17,12 @@ export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const pathname = usePathname();
 
+  // Text colors based on scroll state
+  const textColor = isScrolled ? "text-muted-foreground" : "text-white/80";
+  const textColorHover = isScrolled ? "hover:text-foreground" : "hover:text-white";
+  const textColorActive = isScrolled ? "text-primary" : "text-white";
+  const logoColor = isScrolled ? "text-primary" : "text-white";
+
   // Close menu on route change
   React.useEffect(() => {
     setIsOpen(false);
@@ -96,7 +102,11 @@ export function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className="relative z-50 font-display text-xl font-bold text-primary hover:text-primary-dark transition-colors"
+              className={cn(
+                "relative z-50 font-display text-xl font-bold transition-colors",
+                logoColor,
+                isScrolled ? "hover:text-primary-dark" : "hover:text-white"
+              )}
             >
               <motion.span
                 initial={{ opacity: 0, x: -20 }}
@@ -121,8 +131,8 @@ export function Header() {
                   className={cn(
                     "relative px-4 py-2 text-sm font-medium transition-colors group",
                     pathname === link.href
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? textColorActive
+                      : cn(textColor, textColorHover)
                   )}
                 >
                   {link.label}
@@ -130,12 +140,18 @@ export function Header() {
                   {pathname === link.href && (
                     <motion.span
                       layoutId="activeNav"
-                      className="absolute inset-x-2 -bottom-1 h-0.5 bg-primary rounded-full"
+                      className={cn(
+                        "absolute inset-x-2 -bottom-1 h-0.5 rounded-full",
+                        isScrolled ? "bg-primary" : "bg-white"
+                      )}
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
                   {/* Hover underline */}
-                  <span className="absolute inset-x-2 -bottom-1 h-0.5 bg-primary/30 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                  <span className={cn(
+                    "absolute inset-x-2 -bottom-1 h-0.5 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform origin-left",
+                    isScrolled ? "bg-primary/30" : "bg-white/30"
+                  )} />
                 </Link>
               ))}
             </motion.div>
@@ -147,7 +163,7 @@ export function Header() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="flex items-center gap-3"
             >
-              <ThemeToggle />
+              <ThemeToggle isScrolled={isScrolled} />
 
               {/* CTA Button - Desktop */}
               <Button
@@ -167,7 +183,9 @@ export function Header() {
                   "relative z-50 p-2 rounded-lg lg:hidden transition-colors",
                   isOpen
                     ? "text-white hover:bg-white/10"
-                    : "text-foreground hover:bg-muted"
+                    : isScrolled
+                    ? "text-foreground hover:bg-muted"
+                    : "text-white hover:bg-white/10"
                 )}
                 aria-label={isOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isOpen}

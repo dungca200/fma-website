@@ -58,7 +58,7 @@ export default function AdmissionPage() {
       <Header />
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-amber-500 via-amber-500 to-orange-500">
+        <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-primary via-primary to-sky-600">
           {/* Background pattern */}
           <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
           <div className="absolute inset-0 overflow-hidden">
@@ -88,7 +88,7 @@ export default function AdmissionPage() {
                 </div>
                 <Button
                   size="lg"
-                  className="bg-white text-secondary hover:bg-white/90 shadow-xl"
+                  className="bg-white text-primary hover:bg-white/90 shadow-xl"
                   asChild
                 >
                   <Link href="/contact">
@@ -290,7 +290,7 @@ export default function AdmissionPage() {
 
         {/* Final CTA */}
         <section className="py-section-lg relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary to-amber-600" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-sky-600" />
           <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
 
           <Container className="relative z-10">
@@ -306,7 +306,7 @@ export default function AdmissionPage() {
                 <div className="flex gap-4 justify-center flex-wrap">
                   <Button
                     size="lg"
-                    className="bg-white text-secondary hover:bg-white/90 shadow-xl"
+                    className="bg-white text-primary hover:bg-white/90 shadow-xl"
                     asChild
                   >
                     <Link href="/contact">

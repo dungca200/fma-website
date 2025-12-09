@@ -42,7 +42,7 @@ export default function EventsPage() {
       <Header />
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-secondary via-secondary to-amber-600">
+        <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-br from-primary via-primary to-sky-600">
           {/* Background pattern */}
           <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10" />
           <div className="absolute inset-0 overflow-hidden">
