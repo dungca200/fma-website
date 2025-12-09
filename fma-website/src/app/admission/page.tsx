@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import NextImage from "next/image";
 import { ArrowRight, FileText, ClipboardList, Award, Image, HeartPulse, MapPin, Phone, Clock, CheckCircle2, Calendar, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header, Footer, Container } from "@/components/layout";
@@ -109,6 +110,24 @@ export default function AdmissionPage() {
               title="How to Apply"
               subtitle="Our simple 3-step enrollment process makes joining the FMA family easy"
             />
+          </Container>
+        </section>
+
+        {/* Welcome Banner */}
+        <section className="relative h-64 md:h-80 overflow-hidden">
+          <NextImage
+            src="/images/admission/welcome.jpg"
+            alt="Students and parents at enrollment"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40" />
+          <Container className="relative z-10 h-full flex items-center">
+            <div className="text-white max-w-xl">
+              <h3 className="text-display-sm font-display mb-2">Welcome to the FMA Family</h3>
+              <p className="text-white/90">Join hundreds of families who trust us with their children's education.</p>
+            </div>
           </Container>
         </section>
 

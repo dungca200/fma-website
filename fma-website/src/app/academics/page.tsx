@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, BookOpen, GraduationCap, CheckCircle2, Sparkles, Brain, Users, Palette, Calculator, Globe, Music } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -117,23 +118,35 @@ export default function AcademicsPage() {
             <div className="grid md:grid-cols-2 gap-8">
               {Object.entries(PROGRAMS).map(([key, program], index) => (
                 <ScrollAnimation key={key} delay={index * 0.15} direction={index === 0 ? "left" : "right"}>
-                  <div className="group relative bg-card rounded-card-xl p-8 shadow-card hover-lift overflow-hidden h-full">
-                    {/* Background number */}
-                    <div className="absolute -top-8 -right-4 font-display text-[10rem] font-bold leading-none text-primary/5 select-none">
-                      {String(index + 1).padStart(2, "0")}
+                  <div className="group relative bg-card rounded-card-xl shadow-card hover-lift overflow-hidden h-full">
+                    {/* Program Image */}
+                    <div className="aspect-[16/9] relative overflow-hidden">
+                      <Image
+                        src={`/images/programs/${key}.jpg`}
+                        alt={program.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute bottom-4 left-4">
+                        <Badge className="bg-white/20 text-white border-0 backdrop-blur-sm">
+                          {key === "preschool" ? "Ages 3-5" : "Ages 6-12"}
+                        </Badge>
+                      </div>
                     </div>
 
-                    <div className="relative z-10">
-                      <div className="inline-flex items-center justify-center h-16 w-16 rounded-xl bg-primary/10 text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+                    <div className="p-8">
+                      <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-primary/10 text-primary mb-5 group-hover:bg-primary group-hover:text-white transition-colors">
                         {key === "preschool" ? (
-                          <BookOpen className="h-8 w-8" />
+                          <BookOpen className="h-7 w-7" />
                         ) : (
-                          <GraduationCap className="h-8 w-8" />
+                          <GraduationCap className="h-7 w-7" />
                         )}
                       </div>
 
-                      <h3 className="text-display-sm font-display mb-4">{program.name}</h3>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">{program.description}</p>
+                      <h3 className="text-display-sm font-display mb-3">{program.name}</h3>
+                      <p className="text-muted-foreground mb-5 leading-relaxed">{program.description}</p>
 
                       <div className="flex flex-wrap gap-2 mb-6">
                         {program.levels.map((level) => (

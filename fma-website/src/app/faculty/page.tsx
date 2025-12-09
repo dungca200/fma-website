@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Mail, GraduationCap, Heart, Award, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header, Footer, Container } from "@/components/layout";
@@ -223,10 +224,14 @@ export default function FacultyPage() {
 
               <ScrollAnimation direction="right">
                 <div className="relative">
-                  <div className="aspect-square bg-white/5 rounded-card-xl overflow-hidden border border-white/10">
-                    <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center">
-                      <GraduationCap className="w-32 h-32 text-white/20" />
-                    </div>
+                  <div className="aspect-square bg-white/5 rounded-card-xl overflow-hidden border border-white/10 relative">
+                    <Image
+                      src="/images/faculty/team.jpg"
+                      alt="Teaching team collaborating"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
                   </div>
                   {/* Floating badge */}
                   <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-card-lg shadow-xl">

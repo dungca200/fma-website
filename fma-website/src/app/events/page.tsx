@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, ArrowRight, Newspaper, Star, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header, Footer, Container } from "@/components/layout";
@@ -101,13 +102,14 @@ export default function EventsPage() {
                           <span>{featuredEvent.date}</span>
                         </div>
                       </div>
-                      <div className="aspect-video bg-white/10 rounded-card-lg flex items-center justify-center border border-white/20">
-                        <div className="text-center">
-                          <div className="h-20 w-20 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <Calendar className="w-10 h-10 text-white/50" />
-                          </div>
-                          <p className="text-white/50 text-sm">Event Photo</p>
-                        </div>
+                      <div className="aspect-video bg-white/10 rounded-card-lg overflow-hidden border border-white/20 relative">
+                        <Image
+                          src="/images/events/concert.jpg"
+                          alt="Goldenberg Concert at Malacañang"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                        />
                       </div>
                     </div>
                   </div>
@@ -132,8 +134,14 @@ export default function EventsPage() {
                 <StaggerItem key={event.title}>
                   <Card className="h-full group hover-lift overflow-hidden">
                     <CardContent className="p-0">
-                      <div className="aspect-video bg-gradient-to-br from-blue-500/10 to-blue-600/10 flex items-center justify-center">
-                        <Calendar className="w-12 h-12 text-primary/30 group-hover:text-primary/50 transition-colors" />
+                      <div className="aspect-video bg-gradient-to-br from-blue-500/10 to-blue-600/10 relative overflow-hidden">
+                        <Image
+                          src="/images/events/activity.jpg"
+                          alt={event.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
                       </div>
                       <div className="p-6">
                         <Badge variant="outline" className="mb-3">

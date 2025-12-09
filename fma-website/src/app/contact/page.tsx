@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail, Clock, Facebook, Train, Bus, Send, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header, Footer, Container } from "@/components/layout";
@@ -306,6 +307,24 @@ export default function ContactPage() {
                   </CardContent>
                 </Card>
               </ScrollAnimation>
+            </div>
+          </Container>
+        </section>
+
+        {/* School Image Banner */}
+        <section className="relative h-64 md:h-80 overflow-hidden">
+          <Image
+            src="/images/contact/school.jpg"
+            alt="Future Minds Academy campus"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-slate-900/30" />
+          <Container className="relative z-10 h-full flex items-end pb-8">
+            <div className="text-white">
+              <h3 className="text-display-sm font-display">Our Campus</h3>
+              <p className="text-white/80">Located in the heart of Mandaluyong City</p>
             </div>
           </Container>
         </section>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Award, Users, BookOpen, Heart, Shield, Star, Target } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Award, Users, Heart, Shield, Star, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header, Footer, Container } from "@/components/layout";
 import {
@@ -113,10 +114,14 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <ScrollAnimation direction="left">
                 <div className="relative">
-                  <div className="aspect-[4/3] bg-muted rounded-card-xl overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center">
-                      <BookOpen className="w-32 h-32 text-primary/40" />
-                    </div>
+                  <div className="aspect-[4/3] bg-muted rounded-card-xl overflow-hidden shadow-2xl">
+                    <Image
+                      src="/images/about/story.jpg"
+                      alt="Students learning in classroom"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
                   </div>
                   {/* Floating badge */}
                   <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-card-lg shadow-xl">
